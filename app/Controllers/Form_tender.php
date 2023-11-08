@@ -11,6 +11,12 @@ class Form_tender extends BaseController
     private $session;
     private $UserModel;
 
+    public function __construct()
+    {
+
+        $this->session = session();
+    }
+
     public function index()
     {
 
