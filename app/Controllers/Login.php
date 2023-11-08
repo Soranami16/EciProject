@@ -10,6 +10,12 @@ use App\Models\UserModel;
 class Login extends BaseController
 {
     use ResponseTrait;
+    private $session;
+
+    public function __construct()
+    {
+        $this->session = session();
+    }
 
     public function index()
     {
@@ -33,9 +39,15 @@ class Login extends BaseController
             $token = $this->generateToken($username, $expire, $user);
 
             // Simpan token dalam session
-            $session = session();
-            $session->set('access_token', $token);
-            $session->set('name', $user['Name']);
+            $sessionData = [
+                'oid' => $user['OID'],
+                'code' => $user['Code'],
+                'name' => $user['Name'],
+                'roleoid' => $user['RoleOID'],
+
+            ];
+
+            $this->session->set($sessionData);
 
             return $this->respond([
                 'access_token' => $token,
@@ -61,5 +73,12 @@ class Login extends BaseController
         );
 
         return JWT::encode($payload, $key, 'HS256');
+    }
+
+    public function logout()
+    {
+        $this->session->destroy(); // Hapus semua data sesi
+
+        return redirect()->to('auth'); // Ganti 'auth' dengan URL halaman login
     }
 }

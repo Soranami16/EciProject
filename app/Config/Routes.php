@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Login::index');
+$routes->get('/logout', 'Login::logout');
 $routes->get('/formfasilitas', 'Form_fasilitas::index');
 $routes->get('/formtender', 'Form_tender::index');
 $routes->post('token', "Login::getToken");

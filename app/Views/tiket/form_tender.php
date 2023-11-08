@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Divisi</label>
-                      <input type="text" name="divisi" class="form-control" id="divisi" value="<?= $divisi ?>">
+                      <input type="text" name="divisi" class="form-control" id="divisi" value="<?= $division['Name'] ?>">
                     </div>
                   </div>
                 </div>

@@ -16,10 +16,18 @@ class UserModel extends Model
     protected $protectFields        = true;
     protected $allowedFields        = ['Code', 'Password', 'Name', 'RoleOID'];
 
-    public function role()
+
+    public function getNamaRole($userID)
     {
-        return $this->belongsTo('App\Models\RolesModel', 'RoleOID');
+        $builder = $this->db->table($this->table);
+        $builder->select('Users.*, roles.Name as role_name');
+        $builder->join('roles', 'roles.OID = Users.RoleOID');
+        $builder->where('Users.OID', $userID);
+        $result = $builder->get()->getRow();
+        print_r($result);
     }
+
+
     // Dates
     protected $useTimestamps        = true;
     protected $dateFormat           = 'datetime';
