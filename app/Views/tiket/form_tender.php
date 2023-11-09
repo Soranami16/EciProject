@@ -137,18 +137,18 @@
                     </div>
                     <div id="SementaraTypeBaruField" style="display:none;">
                       <div class="form-group">
-                        <label>Periode Aktif</label>
+                        <label>Tanggal Aktif</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
                               <i class="far fa-calendar-alt"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control float-right" id="PeriodeAktif">
+                          <input type="text" class="form-control float-right" id="tglAktifBaru">
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="KodeTenderType" class="form-control" id="KodeTenderType">
+                        <input type="text" name="PeriodeAktifBaru" class="form-control" id="PeriodeAktifBaru">
                       </div>
                     </div>
                   </div>
@@ -185,18 +185,18 @@
                     </div>
                     <div id="SementaraTypeLamaField" style="display:none;">
                       <div class="form-group">
-                        <label>Periode Aktif</label>
+                        <label>Tanggal Aktif</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text">
                               <i class="far fa-calendar-alt"></i>
                             </span>
                           </div>
-                          <input type="text" class="form-control float-right" id="PeriodeAktifLama">
+                          <input type="text" class="form-control float-right" id="tglAktifLama">
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="KodeTenderType" class="form-control" id="KodeTenderType">
+                        <input type="text" name="PeriodeAktifLama" class="form-control" id="PeriodeAktifLama">
                       </div>
                     </div>
                   </div>

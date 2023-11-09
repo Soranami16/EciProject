@@ -47,8 +47,8 @@
       format: 'L'
     });
 
-    $('#PeriodeAktif').daterangepicker();
-    $('#PeriodeAktifLama').daterangepicker();
+    $('#tglAktifBaru').daterangepicker();
+    $('#tglAktifLama').daterangepicker();
 
   });
 </script>
