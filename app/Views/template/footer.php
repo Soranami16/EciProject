@@ -27,6 +27,7 @@
 <script src="<?php echo base_url('dist/js/adminlte.js?v=3.2.0') ?>"></script>
 <script src="<?php echo base_url('dist/js/demo.js') ?>"></script>
 <script src="<?php echo base_url('js/global.js') ?>"></script>
+<script src="<?php echo base_url('js/form_tender.js') ?>"></script>
 
 <script>
   $(function() {
@@ -36,19 +37,23 @@
     var loginDate = "<?= session()->get('login_date') ?>";
 
     if (loginDate) {
-      $('#datePengajuan').val(loginDate);
+      $('#tgl_pengajuan').val(loginDate);
     } else {
-      $('#datePengajuan').datetimepicker({
+      $('#tgl_pengajuan').datetimepicker({
         format: 'L'
       });
     }
     //Date and time picker
-    $('#dateDiperlukan').datetimepicker({
+    $('#tgl_diperlukan').datetimepicker({
       format: 'L'
     });
 
-    $('#tglAktifBaru').daterangepicker();
-    $('#tglAktifLama').daterangepicker();
+    $('#tgl_aktif').datetimepicker({
+      format: 'L'
+    });
+
+    // $('#tglAktifBaru').daterangepicker();
+    // $('#tglAktifLama').daterangepicker();
 
   });
 </script>

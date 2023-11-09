@@ -71,39 +71,7 @@ class Tiket extends BaseController
     }
 
 
-    public function createTiket()
-    {
-        $tiketModel = new TiketModel();
 
-        $data = array(
-            'tgl_pengajuan' => $this->request->getPost('tgl_pengajuan'),
-            'user_id' => $this->request->getPost('user_id'),
-            'role_id' => $this->request->getPost('role_id'),
-            'tgl_diperlukan' => $this->request->getPost('tgl_diperlukan'),
-            'tender_type' => $this->request->getPost('tender_type') == 'Tender lama' ? 1 : 0,
-            'kode_tender' => $this->request->getPost('kode_tender'),
-            'deskripsi_tender' => $this->request->getPost('deskripsi_tender'),
-            'edc_baru' => $this->request->getPost('edc_baru'),
-            'ket_edc_baru' => $this->request->getPost('ket_edc_baru'),
-            'GL_mapping_tender' => $this->request->getPost('GL_mapping_tender'),
-            'karakteristik_tender' => $this->request->getPost('karakteristik_tender') == 'Permanen' ? 1 : 0,
-            'tgl_aktif' => $this->request->getPost('tgl_aktif'),
-            'periode_aktif' => $this->request->getPost('periode_aktif'),
-            'status' => $this->request->getPost('status'),
-        );
-
-
-        $tiketModel->insert($data);
-        $response = [
-            'status'   => 201,
-            'error'    => null,
-            'messages' => [
-                'success' => 'Data Saved'
-            ]
-        ];
-
-        return $this->respondCreated($data, 201);
-    }
 
     // public function edit($id)
     // {

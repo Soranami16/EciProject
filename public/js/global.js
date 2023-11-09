@@ -48,21 +48,21 @@ var ajax = {
 };
 
 $(document).ready(function () {
-  $("#TypeBaru").change(function () {
+  $("#TenderBaru").change(function () {
     if (this.checked) {
       $("#tenderTypeBaruFields").show();
       $("#tenderTypeLamaFields").hide();
-      $("#TypeLama").prop("checked", false);
+      $("#TenderLama").prop("checked", false);
     } else {
       $("#tenderTypeBaruFields").hide();
     }
   });
 
-  $("#TypeLama").change(function () {
+  $("#TenderLama").change(function () {
     if (this.checked) {
       $("#tenderTypeLamaFields").show();
       $("#tenderTypeBaruFields").hide();
-      $("#TypeBaru").prop("checked", false);
+      $("#TenderBaru").prop("checked", false);
     } else {
       $("#tenderTypeLamaFields").hide();
     }
@@ -83,7 +83,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#SementaraTypeBaru").change(function () {
+  $("#Sementara").change(function () {
     if (this.checked) {
       $("#SementaraTypeBaruField").show();
       $("#PermanenTypeBaru").prop("checked", false);
@@ -92,7 +92,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#PermanenTypeBaru").change(function () {
+  $("#Permanen").change(function () {
     if (this.checked) {
       $("#SementaraTypeBaru").prop("checked", false);
       $("#SementaraTypeBaruField").hide();

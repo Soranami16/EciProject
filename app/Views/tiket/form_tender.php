@@ -27,37 +27,37 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="quickForm">
+            <form id="formTiketTender">
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Pengajuan</label>
-                      <div class="input-group date" id="datePengajuan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#datePengajuan" value="<?= session()->get('login_date') ?>" />
-                        <div class="input-group-append" data-target="#datePengajuan" data-toggle="datetimepicker">
+                      <div class="input-group date" id="tgl_pengajuan" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#tgl_pengajuan" value="<?= session()->get('login_date') ?>" />
+                        <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="nama">Nama</label>
-                      <input type="text" name="nama" class="form-control" id="nama" value="<?= $name ?>">
+                      <label for="user_id">Nama</label>
+                      <input type="text" name="user_id" class="form-control" id="user_id" value="<?= $name ?>">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Diperlukan</label>
-                      <div class="input-group date" id="dateDiperlukan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#dateDiperlukan" />
-                        <div class="input-group-append" data-target="#dateDiperlukan" data-toggle="datetimepicker">
+                      <div class="input-group date" id="tgl_diperlukan" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#tgl_diperlukan" />
+                        <div class="input-group-append" data-target="#tgl_diperlukan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Divisi</label>
-                      <input type="text" name="divisi" class="form-control" id="divisi" value="<?= $division['Name'] ?>">
+                      <input type="text" name="role_id" class="form-control" id="role_id" value="<?= $division['Name'] ?>">
                     </div>
                   </div>
                 </div>
@@ -65,16 +65,16 @@
                   <div class="col-sm-2">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="terms" class="custom-control-input" id="TypeBaru">
-                        <label class="custom-control-label" for="TypeBaru">Tender Type Baru</label>
+                        <input type="checkbox" name="TenderBaru" class="custom-control-input" id="TenderBaru">
+                        <label class="custom-control-label" for="TenderBaru">Tender Type Baru</label>
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-2">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="terms" class="custom-control-input" id="TypeLama">
-                        <label class="custom-control-label" for="TypeLama">Tender Type Lama</label>
+                        <input type="checkbox" name="TenderLama" class="custom-control-input" id="TenderLama">
+                        <label class="custom-control-label" for="TenderLama">Tender Type Lama</label>
                       </div>
                     </div>
                   </div>
@@ -82,8 +82,8 @@
 
                 <div id="tenderTypeBaruFields" style="display:none;">
                   <div class="form-group">
-                    <label for="tenderTypeBaruField">Deskripsi Tender Type</label>
-                    <input type="text" name="deskripsitendertype" class="form-control" id="DeskripsiTenderType" placeholder="Deskripsi Tender Type">
+                    <label for="deskripsi_tender">Deskripsi Tender Type</label>
+                    <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Deskripsi Tender Type">
                   </div>
                   <div class="form-group">
                     <label for="edcbaru">EDC Baru</label>
@@ -107,13 +107,13 @@
                     </div>
                     <div id="EDCbaru" style="display:none;">
                       <div class="form-group">
-                        <input type="text" name="EDC&MappingGLfield" class="form-control" id="EDC&MappingGLfield" placeholder="Di isi oleh Finance Dept">
+                        <input type="text" name="ket_edc_baru" class="form-control" id="ket_edc_baru" placeholder="Di isi oleh Finance Dept">
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="tenderTypeBaruField">GL Mapping Tender</label>
-                    <input type="text" name="deskripsitendertype" class="form-control" id="GLMappingtender" placeholder="Di isi oleh Finance Dept">
+                    <input type="text" name="GL_mapping_tender" class="form-control" id="GL_mapping_tender" placeholder="Di isi oleh Finance Dept">
                   </div>
                   <div class="form-group">
                     <label for="KarakteristikTenderType">Karakteristik Tender Type</label>
@@ -121,16 +121,16 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="SementaraTypeBaru" class="custom-control-input" id="SementaraTypeBaru">
-                            <label class="custom-control-label" for="SementaraTypeBaru">Sementara</label>
+                            <input type="checkbox" name="Sementara" class="custom-control-input" id="Sementara">
+                            <label class="custom-control-label" for="Sementara">Sementara</label>
                           </div>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="PermanenTypeBaru" class="custom-control-input" id="PermanenTypeBaru">
-                            <label class="custom-control-label" for="PermanenTypeBaru">Permanen</label>
+                            <input type="checkbox" name="Permanen" class="custom-control-input" id="Permanen">
+                            <label class="custom-control-label" for="Permanen">Permanen</label>
                           </div>
                         </div>
                       </div>
@@ -138,17 +138,15 @@
                     <div id="SementaraTypeBaruField" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="far fa-calendar-alt"></i>
-                            </span>
+                        <div class="input-group date" id="tgl_aktif" data-target-input="nearest">
+                          <input type="text" class="form-control datetimepicker-input" data-target="#tgl_aktif" />
+                          <div class="input-group-append" data-target="#tgl_aktif" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
-                          <input type="text" class="form-control float-right" id="tglAktifBaru">
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="PeriodeAktifBaru" class="form-control" id="PeriodeAktifBaru">
+                        <input type="text" name="periode_aktif" class="form-control" id="period_eaktif">
                       </div>
                     </div>
                   </div>
@@ -156,12 +154,12 @@
 
                 <div id="tenderTypeLamaFields" style="display:none;">
                   <div class="form-group">
-                    <label for="KodeTenderType">Kode Tender Type</label>
-                    <input type="text" name="KodeTenderType" class="form-control" id="KodeTenderType" placeholder=" Isi Kode Tender Type">
+                    <label for="kode_tender">Kode Tender Type</label>
+                    <input type="text" name="kode_tender" class="form-control" id="kode_tender" placeholder=" Isi Kode Tender Type">
                   </div>
                   <div class="form-group">
-                    <label for="DeskripsiTenderType">Deskripsi Tender Type</label>
-                    <input type="text" name="DeskripsiTenderType" class="form-control" id="DeskripsiTenderType" placeholder="Isi Deskripsi Tender Type">
+                    <label for="deskripsi_tender">Deskripsi Tender Type</label>
+                    <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Isi Deskripsi Tender Type">
                   </div>
                   <div class="form-group">
                     <label for="KarakteristikTenderType">Karakteristik Tender Type</label>
@@ -169,16 +167,16 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="SementaraTypeLama" class="custom-control-input" id="SementaraTypeLama">
-                            <label class="custom-control-label" for="SementaraTypeLama">Sementara</label>
+                            <input type="checkbox" name="Sementara" class="custom-control-input" id="Sementara">
+                            <label class="custom-control-label" for="Sementara">Sementara</label>
                           </div>
                         </div>
                       </div>
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="PermanenTypeLama" class="custom-control-input" id="PermanenTypeLama">
-                            <label class="custom-control-label" for="PermanenTypeLama">Permanen</label>
+                            <input type="checkbox" name="Permanen" class="custom-control-input" id="Permanen">
+                            <label class="custom-control-label" for="Permanen">Permanen</label>
                           </div>
                         </div>
                       </div>
@@ -186,17 +184,15 @@
                     <div id="SementaraTypeLamaField" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="far fa-calendar-alt"></i>
-                            </span>
+                        <div class="input-group date" id="tgl_aktif" data-target-input="nearest">
+                          <input type="text" class="form-control datetimepicker-input" data-target="#tgl_aktif" />
+                          <div class="input-group-append" data-target="#tgl_aktif" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
-                          <input type="text" class="form-control float-right" id="tglAktifLama">
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="PeriodeAktifLama" class="form-control" id="PeriodeAktifLama">
+                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktif">
                       </div>
                     </div>
                   </div>
