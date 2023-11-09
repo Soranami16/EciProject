@@ -10,10 +10,19 @@ class TiketModel extends Model
     protected $primaryKey = 'id_tiket';
     protected $allowedFields = [
         'tgl_pengajuan', 'user_id', 'role_id', 'tgl_diperlukan', 'tender_type', 'kode_tender', 'deskripsi_tender',
-        'edc_baru', 'ket_edc_baru', 'GL_mapping_tender', 'karakteristik_tender', 'ket_karakteristik_tender', 'status'
+        'edc_baru', 'ket_edc_baru', 'GL_mapping_tender', 'karakteristik_tender', 'tgl_aktif', 'periode_aktif', 'status'
     ];
 
-    public function get_id_tiket($id_tiket)
+    public function findByID($id)
+    {
+        $data = $this->find($id);
+        if ($data) {
+            return $data;
+        }
+        return false;
+    }
+
+    public function get_id_tiket($id_tiket)  //ini buat detail tiket
     {
         $builder = $this->db->table($this->table);
         $builder->select('TiketTender.*, users.Name as user_name, roles.Name as role_name');
@@ -23,7 +32,7 @@ class TiketModel extends Model
         return $builder->get()->getRow();
     }
 
-    public function getTiketWithUserAndRole()
+    public function getTiketWithUserAndRole() //ini buat list tiket
     {
         $builder = $this->db->table($this->table);
         $builder->select('TiketTender.*, users.Name as user_name, roles.Name as role_name');

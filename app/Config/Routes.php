@@ -13,7 +13,9 @@ $routes->post('token', "Login::getToken");
 $routes->get('/Users', 'Login::getData');
 $routes->get("home", "Home::index");
 $routes->get('/formtender', 'Form_tender::index');
+
 $routes->get("listtiket", "Tiket::index");
+$routes->post("listtiket/createtiket", "Tiket::createTiket");
 $routes->get("listtiket/detailtiket/(:num)", "Tiket::detail_tiket/$1");
 
 // $routes->group("api", function ($routes) {
