@@ -79,6 +79,6 @@ class Login extends BaseController
     {
         $this->session->destroy(); // Hapus semua data sesi
 
-        return redirect()->to('auth'); // Ganti 'auth' dengan URL halaman login
+        return redirect()->to('/'); // Ganti 'auth' dengan URL halaman login
     }
 }
