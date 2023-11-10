@@ -83,53 +83,31 @@ class Form_tender extends BaseController
             'tgl_diperlukan' => isset($data['tgl_diperlukan']) ? $data['tgl_diperlukan'] : null,
 
             'tender_type' => $data['tender_type'],
-            'kode_tender' =>  $data['kode_tender'],
-            'deskripsi_tender' => $data['deskripsi_tender'],
-
+            'kode_tender' => null,
+            'deskripsi_tender' => null,
             'edc_baru' => isset($data['edc_baru']) ? $data['edc_baru'] : null,
-            'ket_edc_baru' =>  $data['ket_edc_baru'],
-            'GL_mapping_tender' => $data['GL_mapping_tender'],
-
+            'ket_edc_baru' => null,
+            'GL_mapping_tender' => null,
             'karakteristik_tender' => $data['karakteristik_tender'],
-            'tgl_aktif' => isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null,
-            'periode_aktif' =>  $data['periode_aktif'],
+            'tgl_aktif' => null,
+            'periode_aktif' => null,
         ];
 
         if ($data['tender_type'] == 0) { // if tender type is 0 (Baru)
-
-            $insertData['kode_tender'] = $data['kode_tender'] = null;
-            $insertData['deskripsi_tender'] = $data['deskripsi_tender'];
+            $insertData['deskripsi_tender'] = isset($data['deskripsi_tender']) ? $data['deskripsi_tender'] : null;
 
             if (isset($data['edc_baru']) && $data['edc_baru'] == 0) { // if edc is 0 (Ya)
-                $insertData['ket_edc_baru'] = $data['ket_edc_baru'];
-            } else {
-                $insertData['ket_edc_baru'] = $data['ket_edc_baru'] = null;
+                $insertData['ket_edc_baru'] = isset($data['ket_edc_baru']) ? $data['ket_edc_baru'] : null;
             }
 
             $insertData['GL_mapping_tender'] = $data['GL_mapping_tender'];
 
             if (isset($data['karakteristik_tender']) && $data['karakteristik_tender'] == 0) {
                 $insertData['tgl_aktif'] = isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null;
-                $insertData['periode_aktif'] =  $data['periode_aktif'];
-            } else {
-                $insertData['tgl_aktif'] = isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null;
-                $insertData['periode_aktif'] =  $data['periode_aktif'] = null;
+                $insertData['periode_aktif'] = isset($data['periode_aktif']) ? $data['periode_aktif'] : null;
             }
         } elseif ($data['tender_type'] == 1) {
-
             $insertData['kode_tender'] = $data['kode_tender'];
-            $insertData['deskripsi_tender'] = $data['deskripsi_tender'];
-
-            $insertData['GL_mapping_tender'] = $data['GL_mapping_tender'] = null;
-            $insertData['ket_edc_baru'] = $data['ket_edc_baru'] = null;
-
-            if (isset($data['karakteristik_tender']) && $data['karakteristik_tender'] == 0) {
-                $insertData['tgl_aktif'] = isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null;
-                $insertData['periode_aktif'] =  $data['periode_aktif'];
-            } else {
-                $insertData['tgl_aktif'] = isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null;
-                $insertData['periode_aktif'] =  $data['periode_aktif'] = null;
-            }
         }
 
         // Save data to the database
@@ -138,6 +116,7 @@ class Form_tender extends BaseController
 
         return $this->response->setJSON($result);
     }
+
 
 
 

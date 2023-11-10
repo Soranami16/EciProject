@@ -148,7 +148,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktif">
+                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktifBaru">
                       </div>
                     </div>
                   </div>
@@ -194,7 +194,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktif">
+                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktifLama">
                       </div>
                     </div>
                   </div>

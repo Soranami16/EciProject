@@ -24,11 +24,13 @@ $(document).ready(function () {
         if (response.success) {
           alert(response.message);
         } else {
-          alert(response.message);
+          alert("Error: " + response.message);
         }
       },
-      error: function (error) {
-        console.log(error);
+      error: function (xhr, status, error) {
+        var errorMessage = xhr.responseText || "Oops! Something went wrong.";
+        console.log(errorMessage);
+        alert("Error: " + errorMessage);
       },
     });
   });
