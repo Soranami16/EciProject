@@ -76,6 +76,7 @@ $(document).ready(function () {
       $("#EDCbaru").hide();
     }
   });
+
   $("#Tidak").change(function () {
     if (this.checked) {
       $("#Ya").prop("checked", false);
@@ -83,35 +84,38 @@ $(document).ready(function () {
     }
   });
 
-  $("#SementaraTypeBaru").change(function () {
+  $("#SementaraBaru").change(function () {
     if (this.checked) {
-      $("#SementaraTypeBaruField").show();
-      $("#PermanenTypeBaru").prop("checked", false);
+      $("#SementaraFieldBaru").show();
+      $("#PermanenBaru").prop("checked", false);
     } else {
-      $("#SementaraTypeBaruField").hide();
+      $("#SementaraFieldBaru").hide();
     }
   });
 
-  $("#PermanenTypeBaru").change(function () {
+  $("#PermanenBaru").change(function () {
     if (this.checked) {
-      $("#SementaraTypeBaru").prop("checked", false);
-      $("#SementaraTypeBaruField").hide();
-    }
-  });
-
-  $("#SementaraTypeLama").change(function () {
-    if (this.checked) {
-      $("#SementaraTypeLamaField").show();
-      $("#PermanenTypeLama").prop("checked", false);
+      $("#SementaraFieldBaru").hide();
+      $("#SementaraBaru").prop("checked", false);
     } else {
-      $("#SementaraTypeLamaField").hide();
+      $("#SementaraFieldBaru").hide();
     }
   });
 
-  $("#PermanenTypeLama").change(function () {
+  $("#SementaraLama").change(function () {
     if (this.checked) {
-      $("#SementaraTypeLama").prop("checked", false);
-      $("#SementaraTypeLamaField").hide();
+      $("#SementaraFieldLama").show();
+      $("#PermanenLama").prop("checked", false);
+    } else {
+      $("#SementaraFieldLama").hide();
+    }
+  });
+  $("#PermanenLama").change(function () {
+    if (this.checked) {
+      $("#SementaraFieldLama").hide();
+      $("#SementaraBaru").prop("checked", false);
+    } else {
+      $("#SementaraFieldLama").hide();
     }
   });
 });

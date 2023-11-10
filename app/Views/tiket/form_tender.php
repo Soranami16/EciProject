@@ -85,7 +85,7 @@
                 <div id="tenderTypeBaruFields" style="display:none;">
                   <div class="form-group">
                     <label for="deskripsi_tender">Deskripsi Tender Type</label>
-                    <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Deskripsi Tender Type">
+                    <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Isi Deskripsi Tender Type">
                   </div>
                   <div class="form-group">
                     <label for="edcbaru">EDC Baru</label>
@@ -118,26 +118,26 @@
                     <input type="text" name="GL_mapping_tender" class="form-control" id="GL_mapping_tender" placeholder="Di isi oleh Finance Dept">
                   </div>
                   <div class="form-group">
-                    <label for="KarakteristikTenderType">Karakteristik Tender Type</label>
+                    <label for="kar_tender">Karakteristik Tender</label>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraTypeBaru" value="0">
-                            <label class="custom-control-label" for="Sementara">Sementara</label>
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraBaru" value="0">
+                            <label class="custom-control-label" for="SementaraBaru">Sementara</label>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="PermanenTypeBaru" value="0">
-                            <label class="custom-control-label" for="Permanen">Permanen</label>
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="PermanenBaru" value="1">
+                            <label class="custom-control-label" for="PermanenBaru">Permanen</label>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="SementaraTypeBaruField" style="display:none;">
+                    <div id="SementaraFieldBaru" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
                         <div class="input-group date" id="tgl_aktif" name="tgl_aktif" data-target-input="nearest">
@@ -164,26 +164,26 @@
                     <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Isi Deskripsi Tender Type">
                   </div>
                   <div class="form-group">
-                    <label for="KarakteristikTenderType">Karakteristik Tender Type</label>
+                    <label for="kar_tender">Karakteristik Tender</label>
                     <div class="row">
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraTypeLama" value="0">
-                            <label class="custom-control-label" for="Sementara">Sementara</label>
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraLama" value="0">
+                            <label class="custom-control-label" for="SementaraLama">Sementara</label>
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="PermanenTypeLama" value="0">
-                            <label class="custom-control-label" for="Permanen">Permanen</label>
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="Permanenlama" value="1">
+                            <label class="custom-control-label" for="Permanenlama">Permanen</label>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="SementaraTypelamaField" style="display:none;">
+                    <div id="SementaraFieldLama" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
                         <div class="input-group date" id="tgl_aktif" name="tgl_aktif" data-target-input="nearest">
