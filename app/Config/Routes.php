@@ -15,7 +15,7 @@ $routes->get("home", "Home::index");
 $routes->get('/formtender', 'Form_tender::index');
 
 $routes->get("listtiket", "Tiket::index");
-$routes->post("createTiket", "Form_tender::createTiket");
+$routes->post("createTiket", "Form_tender::SubmitForm");
 $routes->get("listtiket/detailtiket/(:num)", "Tiket::detail_tiket/$1");
 
 // $routes->group("api", function ($routes) {

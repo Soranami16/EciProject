@@ -13,6 +13,8 @@ class TiketModel extends Model
         'edc_baru', 'ket_edc_baru', 'GL_mapping_tender', 'karakteristik_tender', 'tgl_aktif', 'periode_aktif', 'status'
     ];
 
+
+
     public function findByID($id)
     {
         $data = $this->find($id);

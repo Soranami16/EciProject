@@ -33,7 +33,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Pengajuan</label>
-                      <div class="input-group date" id="tgl_pengajuan" data-target-input="nearest">
+                      <div class="input-group date" id="tgl_pengajuan" name="tgl_pengajuan" data-target-input="nearest">
                         <input type="text" class="form-control datetimepicker-input" data-target="#tgl_pengajuan" value="<?= session()->get('login_date') ?>" />
                         <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -42,13 +42,14 @@
                     </div>
                     <div class="form-group">
                       <label for="user_id">Nama</label>
-                      <input type="text" name="user_id" class="form-control" id="user_id" value="<?= $name ?>">
+                      <input type="text" name="nama_user" class="form-control" id="nama_user" value="<?= $name ?>">
+                      <input type="hidden" name="user_id" value="<?= $user['OID'] ?>">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Diperlukan</label>
-                      <div class="input-group date" id="tgl_diperlukan" data-target-input="nearest">
+                      <div class="input-group date" id="tgl_diperlukan" name="tgl_diperlukan" data-target-input="nearest">
                         <input type="text" class="form-control datetimepicker-input" data-target="#tgl_diperlukan" />
                         <div class="input-group-append" data-target="#tgl_diperlukan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -57,7 +58,8 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Divisi</label>
-                      <input type="text" name="role_id" class="form-control" id="role_id" value="<?= $division['Name'] ?>">
+                      <input type="text" name="nama_divisi" class="form-control" id="nama_divisi" value="<?= $division['Name'] ?>">
+                      <input type="hidden" name="role_id" value="<?= $division['OID'] ?>">
                     </div>
                   </div>
                 </div>
@@ -65,7 +67,7 @@
                   <div class="col-sm-2">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="TenderBaru" class="custom-control-input" id="TenderBaru">
+                        <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderBaru" value="0">
                         <label class="custom-control-label" for="TenderBaru">Tender Type Baru</label>
                       </div>
                     </div>
@@ -73,7 +75,7 @@
                   <div class="col-sm-2">
                     <div class="form-group">
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="TenderLama" class="custom-control-input" id="TenderLama">
+                        <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderLama" value="1">
                         <label class="custom-control-label" for="TenderLama">Tender Type Lama</label>
                       </div>
                     </div>
@@ -91,7 +93,7 @@
                       <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="Ya" class="custom-control-input" id="Ya">
+                            <input type="checkbox" name="edc_baru" class="custom-control-input" id="Ya" value="0">
                             <label class="custom-control-label" for="Ya">Ya</label>
                           </div>
                         </div>
@@ -99,7 +101,7 @@
                       <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="Tidak" class="custom-control-input" id="Tidak">
+                            <input type="checkbox" name="edc_baru" class="custom-control-input" id="Tidak" value="1">
                             <label class="custom-control-label" for="Tidak">Tidak</label>
                           </div>
                         </div>
@@ -121,7 +123,7 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="Sementara" class="custom-control-input" id="Sementara">
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraTypeBaru" value="0">
                             <label class="custom-control-label" for="Sementara">Sementara</label>
                           </div>
                         </div>
@@ -129,7 +131,7 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="Permanen" class="custom-control-input" id="Permanen">
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="PermanenTypeBaru" value="0">
                             <label class="custom-control-label" for="Permanen">Permanen</label>
                           </div>
                         </div>
@@ -138,7 +140,7 @@
                     <div id="SementaraTypeBaruField" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
-                        <div class="input-group date" id="tgl_aktif" data-target-input="nearest">
+                        <div class="input-group date" id="tgl_aktif" name="tgl_aktif" data-target-input="nearest">
                           <input type="text" class="form-control datetimepicker-input" data-target="#tgl_aktif" />
                           <div class="input-group-append" data-target="#tgl_aktif" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -146,7 +148,7 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <input type="text" name="periode_aktif" class="form-control" id="period_eaktif">
+                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktif">
                       </div>
                     </div>
                   </div>
@@ -167,7 +169,7 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="Sementara" class="custom-control-input" id="Sementara">
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraTypeLama" value="0">
                             <label class="custom-control-label" for="Sementara">Sementara</label>
                           </div>
                         </div>
@@ -175,16 +177,16 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="Permanen" class="custom-control-input" id="Permanen">
+                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="PermanenTypeLama" value="0">
                             <label class="custom-control-label" for="Permanen">Permanen</label>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div id="SementaraTypeLamaField" style="display:none;">
+                    <div id="SementaraTypelamaField" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
-                        <div class="input-group date" id="tgl_aktif" data-target-input="nearest">
+                        <div class="input-group date" id="tgl_aktif" name="tgl_aktif" data-target-input="nearest">
                           <input type="text" class="form-control datetimepicker-input" data-target="#tgl_aktif" />
                           <div class="input-group-append" data-target="#tgl_aktif" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>

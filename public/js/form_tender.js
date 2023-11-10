@@ -1,18 +1,34 @@
 $(document).ready(function () {
-  $("#submitPengajuanTender").click(function (e) {
-    e.preventDefault(); // prevent the default form submission
+  // Use the PHP value directly in JavaScript
+  var loginDate = "<?= json_encode($loginDate) ?>";
+
+  if (loginDate) {
+    $("#tgl_pengajuan").val(loginDate);
+  } else {
+    $("#tgl_pengajuan").datetimepicker({
+      format: "L",
+    });
+  }
+
+  $("#formTiketTender").submit(function (e) {
+    e.preventDefault();
+
+    var formData = $(this).serialize();
+
     $.ajax({
       type: "POST",
-      url: "/createTiket", // replace with your actual submit URL
-      data: $("#formTiketTender").serialize(), // replace with your actual form ID
+      url: "/createTiket",
+      data: formData,
+      dataType: "json",
       success: function (response) {
-        alert("Berhasil Insert Data");
-        location.href = base_url + "/listtiket";
-        console.log(response);
+        if (response.success) {
+          alert(response.message);
+        } else {
+          alert(response.message);
+        }
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-        // handle any errors here
-        console.log(textStatus, errorThrown);
+      error: function (error) {
+        console.log(error);
       },
     });
   });

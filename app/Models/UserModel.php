@@ -6,27 +6,9 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $DBGroup              = 'default';
     protected $table                = 'Users';
     protected $primaryKey           = 'OID';
-    protected $useAutoIncrement     = true;
-    protected $insertID             = 0;
-    protected $returnType           = 'array';
-    protected $useSoftDeletes       = false;
-    protected $protectFields        = true;
     protected $allowedFields        = ['Code', 'Password', 'Name', 'RoleOID'];
-
-
-    public function getNamaRole($userID)
-    {
-        $builder = $this->db->table($this->table);
-        $builder->select('Users.*, roles.Name as role_name');
-        $builder->join('roles', 'roles.OID = Users.RoleOID');
-        $builder->where('Users.OID', $userID);
-        $result = $builder->get()->getRow();
-        print_r($result);
-    }
-
 
     // Dates
     protected $useTimestamps        = true;

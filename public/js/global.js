@@ -83,7 +83,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#Sementara").change(function () {
+  $("#SementaraTypeBaru").change(function () {
     if (this.checked) {
       $("#SementaraTypeBaruField").show();
       $("#PermanenTypeBaru").prop("checked", false);
@@ -92,7 +92,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#Permanen").change(function () {
+  $("#PermanenTypeBaru").change(function () {
     if (this.checked) {
       $("#SementaraTypeBaru").prop("checked", false);
       $("#SementaraTypeBaruField").hide();
