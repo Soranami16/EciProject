@@ -34,7 +34,7 @@
                     <div class="form-group">
                       <label>Tanggal Pengajuan</label>
                       <div class="input-group date" id="tgl_pengajuan" name="tgl_pengajuan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#tgl_pengajuan" value="<?= $userLoginDate ?>" />
+                        <input type="date" class="form-control datetimepicker-input" name="tgl_pengajuan" value=" <?= $userLoginDate ?>" readonly />
                         <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -50,7 +50,7 @@
                     <div class="form-group">
                       <label>Tanggal Diperlukan</label>
                       <div class="input-group date" id="tgl_diperlukan" name="tgl_diperlukan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#tgl_diperlukan" />
+                        <input type="text" class="form-control datetimepicker-input" name="tgl_diperlukan" />
                         <div class="input-group-append" data-target="#tgl_diperlukan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>

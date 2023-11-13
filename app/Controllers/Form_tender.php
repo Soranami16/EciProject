@@ -26,7 +26,7 @@ class Form_tender extends BaseController
         // if (!$this->session->has('login_date')) {
         //     $this->session->set('login_date', date('Y-m-d'));
         // }
-        $userLoginDate = date('Y-m-d');
+        $userLoginDate = date('m/d/Y');
 
         $userModel = new UserModel();
         $user = $userModel->where('Name', $name)->first(); // Mendapatkan informasi pengguna

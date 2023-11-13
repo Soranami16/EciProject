@@ -20,7 +20,6 @@
 <script src="<?php echo base_url('plugins/inputmask/jquery.inputmask.min.js') ?>"></script>
 <script src="<?php echo base_url('plugins/daterangepicker/daterangepicker.js') ?>"></script>
 <script src="<?php echo base_url('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') ?>"></script>
-<script src="<?php echo base_url('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') ?>"></script>
 <script src="<?php echo base_url('plugins/bootstrap-switch/js/bootstrap-switch.min.js') ?>"></script>
 <script src="<?php echo base_url('plugins/bs-stepper/js/bs-stepper.min.js') ?>"></script>
 <script src="<?php echo base_url('plugins/dropzone/min/dropzone.min.js') ?>"></script>
@@ -33,6 +32,7 @@
   $(function() {
 
     //Date picker
+
     var loginDate = "<?= session()->get('login_date') ?>";
 
     if (loginDate) {
@@ -42,9 +42,11 @@
         format: 'L'
       });
     }
+    //Date and time picker
     $('#tgl_diperlukan').datetimepicker({
       format: 'L'
     });
+
     $('#tgl_aktif').datetimepicker({
       format: 'L'
     });
