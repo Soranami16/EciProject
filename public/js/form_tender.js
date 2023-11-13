@@ -1,15 +1,4 @@
 $(document).ready(function () {
-  // Use the PHP value directly in JavaScript
-  var loginDate = "<?= json_encode($loginDate) ?>";
-
-  if (loginDate) {
-    $("#tgl_pengajuan").val(loginDate);
-  } else {
-    $("#tgl_pengajuan").datetimepicker({
-      format: "L",
-    });
-  }
-
   $("#formTiketTender").submit(function (e) {
     e.preventDefault();
 

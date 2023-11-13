@@ -33,7 +33,6 @@
   $(function() {
 
     //Date picker
-
     var loginDate = "<?= session()->get('login_date') ?>";
 
     if (loginDate) {
@@ -43,11 +42,9 @@
         format: 'L'
       });
     }
-    //Date and time picker
     $('#tgl_diperlukan').datetimepicker({
       format: 'L'
     });
-
     $('#tgl_aktif').datetimepicker({
       format: 'L'
     });

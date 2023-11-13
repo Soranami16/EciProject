@@ -34,7 +34,7 @@
                     <div class="form-group">
                       <label>Tanggal Pengajuan</label>
                       <div class="input-group date" id="tgl_pengajuan" name="tgl_pengajuan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#tgl_pengajuan" value="<?= session()->get('login_date') ?>" />
+                        <input type="text" class="form-control datetimepicker-input" data-target="#tgl_pengajuan" value="<?= $userLoginDate ?>" />
                         <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -166,7 +166,7 @@
                   <div class="form-group">
                     <label for="kar_tender">Karakteristik Tender</label>
                     <div class="row">
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
                             <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraLama" value="0">
@@ -174,7 +174,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
                             <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="Permanenlama" value="1">

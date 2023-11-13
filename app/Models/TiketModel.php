@@ -9,7 +9,7 @@ class TiketModel extends Model
     protected $table = 'TiketTender';
     protected $primaryKey = 'id_tiket';
     protected $allowedFields = [
-        'tgl_pengajuan', 'user_id', 'role_id', 'tgl_diperlukan', 'tender_type', 'kode_tender', 'deskripsi_tender',
+        'tanggal', 'user_id', 'role_id', 'tgl_diperlukan', 'tender_type', 'kode_tender', 'deskripsi_tender',
         'edc_baru', 'ket_edc_baru', 'GL_mapping_tender', 'karakteristik_tender', 'tgl_aktif', 'periode_aktif', 'status'
     ];
 

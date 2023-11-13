@@ -23,9 +23,10 @@ class Form_tender extends BaseController
 
         $name = $this->session->get('name');
 
-        if (!$this->session->has('login_date')) {
-            $this->session->set('login_date', date('Y-m-d'));
-        }
+        // if (!$this->session->has('login_date')) {
+        //     $this->session->set('login_date', date('Y-m-d'));
+        // }
+        $userLoginDate = date('Y-m-d');
 
         $userModel = new UserModel();
         $user = $userModel->where('Name', $name)->first(); // Mendapatkan informasi pengguna
@@ -35,6 +36,7 @@ class Form_tender extends BaseController
 
         $data = [
             'title' => 'Form Tender Page',
+            'userLoginDate' => $userLoginDate,
             'name' => $name,
             'user' => $user,
             'division' => $division,
@@ -43,79 +45,88 @@ class Form_tender extends BaseController
         return view('template/header', $data) . view('tiket/form_tender', $data) . view('template/footer');
     }
 
-    // public function createTiket()
-    // {
-    //     $tiketModel = new TiketModel();
-
-    //     $data = array(
-    //         'tgl_pengajuan' => $this->request->getPost('tgl_pengajuan'),
-    //         'user_id' => $this->request->getPost('user_id'),
-    //         'role_id' => $this->request->getPost('role_id'),
-    //         'tgl_diperlukan' => $this->request->getPost('tgl_diperlukan'),
-    //         'tender_type' => $this->request->getPost('tender_type') == 'TenderLama' ? 1 : 0,
-    //         'kode_tender' => $this->request->getPost('kode_tender'),
-    //         'deskripsi_tender' => $this->request->getPost('deskripsi_tender'),
-    //         'edc_baru' => $this->request->getPost('edc_baru') == 'Tidak' ? 1 : 0,
-    //         'ket_edc_baru' => $this->request->getPost('ket_edc_baru'),
-    //         'GL_mapping_tender' => $this->request->getPost('GL_mapping_tender'),
-    //         'karakteristik_tender' => $this->request->getPost('karakteristik_tender') == 'Permanen' ? 1 : 0,
-    //         'tgl_aktif' => $this->request->getPost('tgl_aktif'),
-    //         'periode_aktif' => $this->request->getPost('periode_aktif'),
-    //         // 'status' => $this->request->getPost('status'),
-    //     );
-
-
-    //     $tiketModel->insert($data);
-    //     $res = array(
-    //         "tiketModel" => $tiketModel
-    //     );
-    //     return json_encode($res);
-    // }
-
     public function submitForm()
     {
         $data = $this->request->getPost();
 
         $insertData = [
-            'tgl_pengajuan' => isset($data['tgl_pengajuan']) ? $data['tgl_pengajuan'] : null,
+            'tgl_pengajuan' => $data['tanggal'],
             'user_id' => $data['user_id'],
             'role_id' => $data['role_id'],
-            'tgl_diperlukan' => isset($data['tgl_diperlukan']) ? $data['tgl_diperlukan'] : null,
+            'tgl_diperlukan' => $data['tgl_diperlukan'],
+            'status' => 0,
 
-            'tender_type' => $data['tender_type'],
-            'kode_tender' => null,
-            'deskripsi_tender' => null,
-            'edc_baru' => isset($data['edc_baru']) ? $data['edc_baru'] : null,
-            'ket_edc_baru' => null,
-            'GL_mapping_tender' => null,
-            'karakteristik_tender' => $data['karakteristik_tender'],
-            'tgl_aktif' => null,
-            'periode_aktif' => null,
+            'deskripsi_tender' => ($data['tender_type'] == 0 || $data['tender_type'] == 1) ? $data['deskripsi_tender'] : null,
+            'edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['edc_baru'] : null,
+            'ket_edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['ket_edc_baru'] : null,
+            'GL_mapping_tender' => ($data['tender_type'] == 0) ? $data['GL_mapping_tender'] : null,
+            'karakteristik_tender' => ($data['tender_type'] == 0) ? $data['karakteristik_tender'] : null,
+            'tgl_aktif' => ($data['tender_type'] == 0 && $data['karakteristik_tender'] == 0) ? $data['tgl_aktif'] : null,
+            'periode_aktif' => ($data['tender_type'] == 0 && $data['karakteristik_tender'] == 0) ? $data['periode_aktif'] : null,
+
+            'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
+            'deskripsi_tender' => ($data['tender_type'] == 0 || $data['tender_type'] == 1) ? $data['deskripsi_tender'] : null,
+            'karakteristik_tender' => ($data['tender_type'] == 1) ? $data['karakteristik_tender'] : null,
+            'tgl_aktif' => ($data['tender_type'] == 1 && $data['karakteristik_tender'] == 0) ? $data['tgl_aktif'] : null,
+            'periode_aktif' => ($data['tender_type'] == 1 && $data['karakteristik_tender'] == 0) ? $data['periode_aktif'] : null,
         ];
 
-        if ($data['tender_type'] == 0) { // if tender type is 0 (Baru)
-            $insertData['deskripsi_tender'] = isset($data['deskripsi_tender']) ? $data['deskripsi_tender'] : null;
+        $result = $this->tiketModel->insert($insertData);
 
-            if (isset($data['edc_baru']) && $data['edc_baru'] == 0) { // if edc is 0 (Ya)
-                $insertData['ket_edc_baru'] = isset($data['ket_edc_baru']) ? $data['ket_edc_baru'] : null;
-            }
+        $response = [
+            'success' => $result,
+            'message' => ($result) ? 'Form submitted successfully' : 'Error submitting form',
+        ];
 
-            $insertData['GL_mapping_tender'] = $data['GL_mapping_tender'];
-
-            if (isset($data['karakteristik_tender']) && $data['karakteristik_tender'] == 0) {
-                $insertData['tgl_aktif'] = isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null;
-                $insertData['periode_aktif'] = isset($data['periode_aktif']) ? $data['periode_aktif'] : null;
-            }
-        } elseif ($data['tender_type'] == 1) {
-            $insertData['kode_tender'] = $data['kode_tender'];
-        }
-
-        // Save data to the database
-        $tiketTenderModel = new TiketModel();
-        $result = $tiketTenderModel->insert($insertData);
-
-        return $this->response->setJSON($result);
+        return $this->response->setJSON($response);
     }
+
+
+
+    // public function submitForm()
+    // {
+    //     $data = $this->request->getPost();
+
+    //     $insertData = [
+    //         'tgl_pengajuan' => isset($data['tgl_pengajuan']) ? $data['tgl_pengajuan'] : null,
+    //         'user_id' => $data['user_id'],
+    //         'role_id' => $data['role_id'],
+    //         'tgl_diperlukan' => isset($data['tgl_diperlukan']) ? $data['tgl_diperlukan'] : null,
+
+    //         'tender_type' => $data['tender_type'],
+    //         'kode_tender' => null,
+    //         'deskripsi_tender' => null,
+    //         'edc_baru' => isset($data['edc_baru']) ? $data['edc_baru'] : null,
+    //         'ket_edc_baru' => null,
+    //         'GL_mapping_tender' => null,
+    //         'karakteristik_tender' => $data['karakteristik_tender'],
+    //         'tgl_aktif' => null,
+    //         'periode_aktif' => null,
+    //     ];
+
+    //     if ($data['tender_type'] == 0) { // if tender type is 0 (Baru)
+    //         $insertData['deskripsi_tender'] = isset($data['deskripsi_tender']) ? $data['deskripsi_tender'] : null;
+
+    //         if (isset($data['edc_baru']) && $data['edc_baru'] == 0) { // if edc is 0 (Ya)
+    //             $insertData['ket_edc_baru'] = isset($data['ket_edc_baru']) ? $data['ket_edc_baru'] : null;
+    //         }
+
+    //         $insertData['GL_mapping_tender'] = $data['GL_mapping_tender'];
+
+    //         if (isset($data['karakteristik_tender']) && $data['karakteristik_tender'] == 0) {
+    //             $insertData['tgl_aktif'] = isset($data['tgl_aktif']) ? $data['tgl_aktif'] : null;
+    //             $insertData['periode_aktif'] = isset($data['periode_aktif']) ? $data['periode_aktif'] : null;
+    //         }
+    //     } elseif ($data['tender_type'] == 1) {
+    //         $insertData['kode_tender'] = $data['kode_tender'];
+    //     }
+
+    //     // Save data to the database
+    //     $tiketTenderModel = new TiketModel();
+    //     $result = $tiketTenderModel->insert($insertData);
+
+    //     return $this->response->setJSON($result);
+    // }
 
 
 
