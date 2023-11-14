@@ -22,7 +22,7 @@
 
                         <div class="row invoice-info">
                             <div class="col-sm-4 invoice-col">
-                                <p for="tglpengajuan">Tanggal Pengajuan : <b><?= $tiket->tgl_pengajuan; ?></b></p>
+                                <p for="tglpengajuan">Tanggal Pengajuan : <b><?= $tiket->tanggal; ?></b></p>
                                 <p for="nama">Nama : <b><?= $tiket->user_name; ?></b></p>
                             </div>
 

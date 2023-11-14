@@ -39,7 +39,7 @@
                                     <?php foreach ($tiket as $row) : ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
-                                            <td><?= $row['tgl_pengajuan'] ?></td>
+                                            <td><?= $row['tanggal'] ?></td>
                                             <td><?= $row['user_name'] ?></td>
                                             <td><?= $row['role_name'] ?></td>
                                             <td><?= $row['tgl_diperlukan'] ?></td>

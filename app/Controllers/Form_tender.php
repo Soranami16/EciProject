@@ -42,34 +42,54 @@ class Form_tender extends BaseController
             'division' => $division,
         ];
 
-        return view('template/header', $data) . view('tiket/form_tender', $data) . view('template/footer');
+        return view('template/header', $data) . view('tiket/form_tender', $data) . view('template/footer');  //ini nyambunginnya
     }
 
     public function submitForm()
     {
         $data = $this->request->getPost();
+        // var_dump($data);
+        // die;
+
+        if ($data['tender_type'] == 0) {
+            $deskripsi = $data['deskripsi_tender_baru'];
+            $karakteristik = $data['karakteristik_tender_baru'];
+        } else {
+            $deskripsi = $data['deskripsi_tender_lama'];
+            $karakteristik = $data['karakteristik_tender_lama'];
+        }
+
+        if ($data['tender_type'] == 0 && $data['karakteristik_tender_baru'] == 0) {
+            $tgl_aktif = $data['tgl_aktif_baru'];
+            $periode_aktif = $data['periode_aktif_baru'];
+        } else if ($data['tender_type'] == 1 && $data['karakteristik_tender_lama'] == 0) {
+            $tgl_aktif = $data['tgl_aktif_lama'];
+            $periode_aktif = $data['periode_aktif_lama'];
+        } else {
+            $tgl_aktif = null;
+            $periode_aktif = null;
+        }
+
+
 
         $insertData = [
-            'tgl_pengajuan' => $data['tanggal'],
+            'tanggal' => $data['tgl_pengajuan'],
             'user_id' => $data['user_id'],
             'role_id' => $data['role_id'],
             'tgl_diperlukan' => $data['tgl_diperlukan'],
             'status' => 0,
-
-            'deskripsi_tender' => ($data['tender_type'] == 0 || $data['tender_type'] == 1) ? $data['deskripsi_tender'] : null,
+            'tender_type' => $data['tender_type'],
+            'deskripsi_tender' => $deskripsi,
+            'karakteristik_tender' => $karakteristik,
+            'tgl_aktif' =>  $tgl_aktif,
+            'periode_aktif' =>  $periode_aktif,
             'edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['edc_baru'] : null,
             'ket_edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['ket_edc_baru'] : null,
             'GL_mapping_tender' => ($data['tender_type'] == 0) ? $data['GL_mapping_tender'] : null,
-            'karakteristik_tender' => ($data['tender_type'] == 0) ? $data['karakteristik_tender'] : null,
-            'tgl_aktif' => ($data['tender_type'] == 0 && $data['karakteristik_tender'] == 0) ? $data['tgl_aktif'] : null,
-            'periode_aktif' => ($data['tender_type'] == 0 && $data['karakteristik_tender'] == 0) ? $data['periode_aktif'] : null,
-
             'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
-            'deskripsi_tender' => ($data['tender_type'] == 0 || $data['tender_type'] == 1) ? $data['deskripsi_tender'] : null,
-            'karakteristik_tender' => ($data['tender_type'] == 1) ? $data['karakteristik_tender'] : null,
-            'tgl_aktif' => ($data['tender_type'] == 1 && $data['karakteristik_tender'] == 0) ? $data['tgl_aktif'] : null,
-            'periode_aktif' => ($data['tender_type'] == 1 && $data['karakteristik_tender'] == 0) ? $data['periode_aktif'] : null,
         ];
+
+
 
         $result = $this->tiketModel->insert($insertData);
 

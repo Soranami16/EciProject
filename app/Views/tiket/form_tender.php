@@ -34,7 +34,7 @@
                     <div class="form-group">
                       <label>Tanggal Pengajuan</label>
                       <div class="input-group date" id="tgl_pengajuan" name="tgl_pengajuan" data-target-input="nearest">
-                        <input type="date" class="form-control datetimepicker-input" name="tgl_pengajuan" value=" <?= $userLoginDate ?>" readonly />
+                        <input type="text" class="form-control datetimepicker-input" name="tgl_pengajuan" value=" <?= $userLoginDate ?>" readonly />
                         <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
@@ -49,12 +49,13 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Diperlukan</label>
-                      <div class="input-group date" id="tgl_diperlukan" name="tgl_diperlukan" data-target-input="nearest">
+                      <input type="date" class="form-control" name="tgl_diperlukan" />
+                      <!-- <div class="input-group date" id="tgl_diperlukan" name="tgl_diperlukan" data-target-input="nearest">
                         <input type="text" class="form-control datetimepicker-input" name="tgl_diperlukan" />
                         <div class="input-group-append" data-target="#tgl_diperlukan" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Divisi</label>
@@ -82,10 +83,11 @@
                   </div>
                 </div>
 
+                <!-- baru -->
                 <div id="tenderTypeBaruFields" style="display:none;">
                   <div class="form-group">
-                    <label for="deskripsi_tender">Deskripsi Tender Type</label>
-                    <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Isi Deskripsi Tender Type">
+                    <label for="deskripsi_tender_baru">Deskripsi Tender Type</label>
+                    <input type="text" name="deskripsi_tender_baru" class="form-control" id="deskripsi_tender_baru" placeholder="Isi Deskripsi Tender Type">
                   </div>
                   <div class="form-group">
                     <label for="edcbaru">EDC Baru</label>
@@ -123,7 +125,7 @@
                       <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraBaru" value="0">
+                            <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="SementaraBaru" value="0">
                             <label class="custom-control-label" for="SementaraBaru">Sementara</label>
                           </div>
                         </div>
@@ -131,7 +133,7 @@
                       <div class="col-sm-2">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="PermanenBaru" value="1">
+                            <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="PermanenBaru" value="1">
                             <label class="custom-control-label" for="PermanenBaru">Permanen</label>
                           </div>
                         </div>
@@ -140,28 +142,24 @@
                     <div id="SementaraFieldBaru" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
-                        <div class="input-group date" id="tgl_aktif" name="tgl_aktif" data-target-input="nearest">
-                          <input type="text" class="form-control datetimepicker-input" data-target="#tgl_aktif" />
-                          <div class="input-group-append" data-target="#tgl_aktif" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
-                        </div>
+                        <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru" />
                       </div>
                       <div class="form-group">
-                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktifBaru">
+                        <input type="text" name="periode_aktif_baru" class="form-control" id="periode_aktifBaru">
                       </div>
                     </div>
                   </div>
                 </div>
 
+                <!--lama-->
                 <div id="tenderTypeLamaFields" style="display:none;">
                   <div class="form-group">
                     <label for="kode_tender">Kode Tender Type</label>
                     <input type="text" name="kode_tender" class="form-control" id="kode_tender" placeholder=" Isi Kode Tender Type">
                   </div>
                   <div class="form-group">
-                    <label for="deskripsi_tender">Deskripsi Tender Type</label>
-                    <input type="text" name="deskripsi_tender" class="form-control" id="deskripsi_tender" placeholder="Isi Deskripsi Tender Type">
+                    <label for="deskripsi_tender_lama">Deskripsi Tender Type</label>
+                    <input type="text" name="deskripsi_tender_lama" class="form-control" id="deskripsi_tender_lama" placeholder="Isi Deskripsi Tender Type">
                   </div>
                   <div class="form-group">
                     <label for="kar_tender">Karakteristik Tender</label>
@@ -169,7 +167,7 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="SementaraLama" value="0">
+                            <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="SementaraLama" value="0">
                             <label class="custom-control-label" for="SementaraLama">Sementara</label>
                           </div>
                         </div>
@@ -177,7 +175,7 @@
                       <div class="col-sm-3">
                         <div class="form-group">
                           <div class="custom-control custom-checkbox">
-                            <input type="checkbox" name="karakteristik_tender" class="custom-control-input" id="Permanenlama" value="1">
+                            <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="Permanenlama" value="1">
                             <label class="custom-control-label" for="Permanenlama">Permanen</label>
                           </div>
                         </div>
@@ -186,15 +184,10 @@
                     <div id="SementaraFieldLama" style="display:none;">
                       <div class="form-group">
                         <label>Tanggal Aktif</label>
-                        <div class="input-group date" id="tgl_aktif" name="tgl_aktif" data-target-input="nearest">
-                          <input type="text" class="form-control datetimepicker-input" data-target="#tgl_aktif" />
-                          <div class="input-group-append" data-target="#tgl_aktif" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
-                        </div>
+                        <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_lama" />
                       </div>
                       <div class="form-group">
-                        <input type="text" name="periode_aktif" class="form-control" id="periode_aktifLama">
+                        <input type="text" name="periode_aktif_lama" class="form-control" id="periode_aktifLama">
                       </div>
                     </div>
                   </div>
