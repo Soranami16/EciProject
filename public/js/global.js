@@ -105,15 +105,16 @@ $(document).ready(function () {
   $("#SementaraLama").change(function () {
     if (this.checked) {
       $("#SementaraFieldLama").show();
-      $("#PermanenLama").prop("checked", false);
+      $("#PermanenBaru").prop("checked", false);
     } else {
       $("#SementaraFieldLama").hide();
     }
   });
+
   $("#PermanenLama").change(function () {
     if (this.checked) {
       $("#SementaraFieldLama").hide();
-      $("#SementaraBaru").prop("checked", false);
+      $("#SementaraLama").prop("checked", false);
     } else {
       $("#SementaraFieldLama").hide();
     }
