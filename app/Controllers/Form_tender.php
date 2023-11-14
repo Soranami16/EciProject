@@ -83,7 +83,7 @@ class Form_tender extends BaseController
             'karakteristik_tender' => $karakteristik,
             'tgl_aktif' =>  $tgl_aktif,
             'periode_aktif' =>  $periode_aktif,
-            'edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['edc_baru'] : null,
+            'edc_baru' => ($data['tender_type'] == 0) ? $data['edc_baru'] : null,
             'ket_edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['ket_edc_baru'] : null,
             'GL_mapping_tender' => ($data['tender_type'] == 0) ? $data['GL_mapping_tender'] : null,
             'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,

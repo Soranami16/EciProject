@@ -140,12 +140,18 @@
                       </div>
                     </div>
                     <div id="SementaraFieldBaru" style="display:none;">
-                      <div class="form-group">
-                        <label>Tanggal Aktif</label>
-                        <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru" />
-                      </div>
-                      <div class="form-group">
-                        <input type="text" name="periode_aktif_baru" class="form-control" id="periode_aktifBaru">
+                      <label>Tanggal Aktif</label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru" />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input type="text" name="periode_aktif_baru" class="form-control" id="periode_aktifBaru">
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -182,12 +188,18 @@
                       </div>
                     </div>
                     <div id="SementaraFieldLama" style="display:none;">
-                      <div class="form-group">
-                        <label>Tanggal Aktif</label>
-                        <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_lama" />
-                      </div>
-                      <div class="form-group">
-                        <input type="text" name="periode_aktif_lama" class="form-control" id="periode_aktifLama">
+                      <label>Tanggal Aktif</label>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_lama" />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input type="text" name="periode_aktif_lama" class="form-control" id="periode_aktifLama">
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
