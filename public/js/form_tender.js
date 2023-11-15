@@ -12,6 +12,7 @@ $(document).ready(function () {
       success: function (response) {
         if (response.success) {
           alert(response.message);
+          window.location.href = "/listtiket";
         } else {
           alert("Error: " + response.message);
         }

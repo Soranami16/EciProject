@@ -14,14 +14,8 @@ $routes->get('/Users', 'Login::getData');
 $routes->get("home", "Home::index");
 $routes->get('/formtender', 'Form_tender::index');
 
-$routes->get("listtiket", "Tiket::index");
+$routes->get("listtiket", "List_Tiket::index");
 $routes->post("createTiket", "Form_tender::SubmitForm");
-$routes->get("listtiket/detailtiket/(:num)", "Tiket::detail_tiket/$1");
-$routes->get("listtiket/deletetiket/(:num)", "Tiket::deletetiket/$1");
-$routes->get("listtiket/edittiket/(:num)", "Tiket::edittiket/$1");
-
-$routes->group("listtiket", "Tiket::index", function ($routes) {
-    $routes->get("/detailtiket/(:num)", "Tiket::detail_tiket/$1");
-    $routes->get("/deletetiket/(:num)", "Tiket::deletetiket/$1");
-    $routes->get("/edittiket/(:num)", "Tiket::edittiket/$1");
-});
+$routes->get("listtiket/detailtiket/(:num)", "List_Tiket::detail_tiket/$1");
+$routes->get("listtiket/deletetiket/(:num)", "List_Tiket::deletetiket/$1");
+$routes->get("listtiket/edittiket/(:num)", "Form_tender::editformtender/$1");
