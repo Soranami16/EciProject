@@ -33,12 +33,10 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Pengajuan</label>
-                      <div class="input-group date" id="tgl_pengajuan" name="tgl_pengajuan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" name="tgl_pengajuan" value=" <?= $userLoginDate ?>" readonly />
-                        <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                      </div>
+                      <?php
+                      $formattedDate = date('Y-m-d', strtotime($userLoginDate));
+                      ?>
+                      <input type="date" class="form-control" name="tgl_pengajuan" value="<?= $formattedDate ?>" readonly />
                     </div>
                     <div class="form-group">
                       <label for="user_id">Nama</label>

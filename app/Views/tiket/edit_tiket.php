@@ -33,12 +33,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Tanggal Pengajuan</label>
-                                            <div class="input-group date" id="tgl_pengajuan" name="tgl_pengajuan" data-target-input="nearest">
-                                                <input type="text" class="form-control datetimepicker-input" name="tgl_pengajuan" value=" <?= $tender['tanggal'] ?>" readonly />
-                                                <div class="input-group-append" data-target="#tgl_pengajuan" data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
-                                            </div>
+                                            <?php
+                                            $formattedDate = date('Y-m-d', strtotime($tender['tanggal']));
+                                            ?>
+                                            <input type="date" class="form-control" name="tgl_pengajuan" value="<?= $formattedDate ?>" />
                                         </div>
                                         <div class="form-group">
                                             <label for="user_id">Nama</label>
@@ -49,13 +47,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>Tanggal Diperlukan</label>
-                                            <input type="date" class="form-control" name="tgl_diperlukan" value=" <?= $tender['tgl_diperlukan'] ?>" />
-                                            <!-- <div class="input-group date" id="tgl_diperlukan" name="tgl_diperlukan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" name="tgl_diperlukan" />
-                        <div class="input-group-append" data-target="#tgl_diperlukan" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                      </div> -->
+                                            <?php
+                                            $formattedDate = date('Y-m-d', strtotime($tender['tgl_diperlukan']));
+                                            ?>
+                                            <input type="date" class="form-control" name="tgl_diperlukan" value="<?= $formattedDate ?>" />
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Divisi</label>
@@ -144,7 +139,10 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru" value=" <?= $tender['tgl_aktif'] ?>" />
+                                                        <?php
+                                                        $formattedDate = date('Y-m-d', strtotime($tender['tgl_aktif']));
+                                                        ?>
+                                                        <input type="date" class="form-control" name="tgl_aktif_baru" value="<?= $formattedDate ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -192,7 +190,10 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_lama" value=" <?= $tender['tgl_aktif'] ?>" />
+                                                        <?php
+                                                        $formattedDate = date('Y-m-d', strtotime($tender['tgl_aktif']));
+                                                        ?>
+                                                        <input type="date" class="form-control" name="tgl_aktif_lama" value="<?= $formattedDate ?>" />
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
