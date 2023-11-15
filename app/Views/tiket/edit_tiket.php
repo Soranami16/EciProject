@@ -27,7 +27,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form id="formTiketTender">
+                        <form id="formTiketTenderEdit">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -63,7 +63,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderBaru" value="0">
+                                                <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderBaru" value="0" <?php echo ($tender['tender_type'] == 0) ? 'checked' : ''; ?>>
                                                 <label class="custom-control-label" for="TenderBaru">Tender Type Baru</label>
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderLama" value="1">
+                                                <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderLama" value="1" <?php echo ($tender['tender_type'] == 1) ? 'checked' : ''; ?>>
                                                 <label class="custom-control-label" for="TenderLama">Tender Type Lama</label>
                                             </div>
                                         </div>
@@ -79,8 +79,8 @@
                                 </div>
 
                                 <!-- baru -->
-                                <div id="tenderTypeBaruFields" style="display:none;">
-                                    <div class="form-group">
+                                <div id="tenderTypeBaruFields" style="display: <?= ($tender['tender_type'] == 0) ? 'block' : 'none' ?>;">
+                                    <div class=" form-group">
                                         <label for="deskripsi_tender_baru">Deskripsi Tender Type</label>
                                         <input type="text" name="deskripsi_tender_baru" class="form-control" id="deskripsi_tender_baru" value=" <?= $tender['deskripsi_tender'] ?>" placeholder="Isi Deskripsi Tender Type">
                                     </div>
@@ -90,7 +90,7 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="edc_baru" class="custom-control-input" id="Ya" value="0">
+                                                        <input type="checkbox" name="edc_baru" class="custom-control-input" id="Ya" value="0" <?php echo ($tender['edc_baru'] == 0) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="Ya">Ya</label>
                                                     </div>
                                                 </div>
@@ -98,13 +98,13 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="edc_baru" class="custom-control-input" id="Tidak" value="1">
+                                                        <input type="checkbox" name="edc_baru" class="custom-control-input" id="Tidak" value="1" <?php echo ($tender['edc_baru'] == 1) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="Tidak">Tidak</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="EDCbaru" style="display:none;">
+                                        <div id="EDCbaru" style="display: <?= ($tender['edc_baru'] == 0) ? 'block' : 'none' ?>;">
                                             <div class="form-group">
                                                 <input type="text" name="ket_edc_baru" class="form-control" id="ket_edc_baru" value=" <?= $tender['ket_edc_baru'] ?>" placeholder="Di isi oleh Finance Dept">
                                             </div>
@@ -120,7 +120,7 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="SementaraBaru" value="0">
+                                                        <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="SementaraBaru" value="0" <?php echo ($tender['karakteristik_tender'] == 0) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="SementaraBaru">Sementara</label>
                                                     </div>
                                                 </div>
@@ -128,13 +128,13 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="PermanenBaru" value="1">
+                                                        <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="PermanenBaru" value="1" <?php echo ($tender['karakteristik_tender'] == 1) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="PermanenBaru">Permanen</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="SementaraFieldBaru" style="display:none;">
+                                        <div id="SementaraFieldBaru" style="<?= ($tender['karakteristik_tender'] == 0) ? 'block' : 'none' ?>;">
                                             <label>Tanggal Aktif</label>
                                             <div class="row">
                                                 <div class="col-sm-6">
@@ -156,7 +156,7 @@
                                 </div>
 
                                 <!--lama-->
-                                <div id="tenderTypeLamaFields" style="display:none;">
+                                <div id="tenderTypeLamaFields" style="display: <?= ($tender['tender_type'] == 1) ? 'block' : 'none' ?>;">
                                     <div class="form-group">
                                         <label for="kode_tender">Kode Tender Type</label>
                                         <input type="text" name="kode_tender" class="form-control" id="kode_tender" value=" <?= $tender['kode_tender'] ?>" placeholder=" Isi Kode Tender Type">
@@ -171,7 +171,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="SementaraLama" value="0">
+                                                        <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="SementaraLama" value="0" <?php echo ($tender['karakteristik_tender'] == 0) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="SementaraLama">Sementara</label>
                                                     </div>
                                                 </div>
@@ -179,13 +179,13 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="Permanenlama" value="1">
+                                                        <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="Permanenlama" value="1" <?php echo ($tender['karakteristik_tender'] == 1) ? 'checked' : ''; ?>>
                                                         <label class="custom-control-label" for="Permanenlama">Permanen</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="SementaraFieldLama" style="display:none;">
+                                        <div id="SementaraFieldLama" style="<?= ($tender['karakteristik_tender'] == 0) ? 'block' : 'none' ?>;">
                                             <label>Tanggal Aktif</label>
                                             <div class="row">
                                                 <div class="col-sm-6">

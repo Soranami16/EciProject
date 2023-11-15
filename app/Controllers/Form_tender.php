@@ -115,19 +115,57 @@ class Form_tender extends BaseController
         return view('template/header', $data) . view('tiket/edit_tiket', $data) . view('template/footer');
     }
 
-    public function update($id)
+    public function updateFormTender($id)
     {
         $tiketModel = new TiketModel();
 
-        $data = [
-            'tgl_pengajuan' => $this->request->getPost('tgl_pengajuan'),
-            'nama' => $this->request->getPost('nama'),
-            'divisi' => $this->request->getPost('divisi'),
-            'status' => $this->request->getPost('status'),
+        $data = $this->request->getPost();
+        // var_dump($data);
+        // die;
+
+        if ($data['tender_type'] == 0) {
+            $deskripsi = $data['deskripsi_tender_baru'];
+            $karakteristik = $data['karakteristik_tender_baru'];
+        } else {
+            $deskripsi = $data['deskripsi_tender_lama'];
+            $karakteristik = $data['karakteristik_tender_lama'];
+        }
+
+        if ($data['tender_type'] == 0 && $data['karakteristik_tender_baru'] == 0) {
+            $tgl_aktif = $data['tgl_aktif_baru'];
+            $periode_aktif = $data['periode_aktif_baru'];
+        } else if ($data['tender_type'] == 1 && $data['karakteristik_tender_lama'] == 0) {
+            $tgl_aktif = $data['tgl_aktif_lama'];
+            $periode_aktif = $data['periode_aktif_lama'];
+        } else {
+            $tgl_aktif = null;
+            $periode_aktif = null;
+        }
+
+        $insertData = [
+            'tanggal' => $data['tgl_pengajuan'],
+            'user_id' => $data['user_id'],
+            'role_id' => $data['role_id'],
+            'tgl_diperlukan' => $data['tgl_diperlukan'],
+            'status' => 0,
+            'tender_type' => $data['tender_type'],
+            'deskripsi_tender' => $deskripsi,
+            'karakteristik_tender' => $karakteristik,
+            'tgl_aktif' =>  $tgl_aktif,
+            'periode_aktif' =>  $periode_aktif,
+            'edc_baru' => ($data['tender_type'] == 0) ? $data['edc_baru'] : null,
+            'ket_edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['ket_edc_baru'] : null,
+            'GL_mapping_tender' => ($data['tender_type'] == 0) ? $data['GL_mapping_tender'] : null,
+            'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
         ];
 
-        $tiketModel->update($id, $data);
+        $result = $this->tiketModel->update($id, $insertData);
 
-        return redirect()->to('/tiket');
+        $response = [
+            'success' => $result,
+            'message' => ($result) ? 'Form submitted editsuccessfully' : 'Error submitting form',
+        ];
+
+        return $this->response->setJSON($response);
     }
 }
