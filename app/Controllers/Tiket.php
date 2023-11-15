@@ -70,8 +70,13 @@ class Tiket extends BaseController
         return view('template/header', $data) . view('tiket/detail_tiket', $data) . view('template/footer');
     }
 
+    public function deletetiket($id)
+    {
+        $tiketModel = new TiketModel();
+        $tiketModel->delete($id);
 
-
+        return redirect()->to('/listtiket');
+    }
 
     // public function edit($id)
     // {
@@ -97,11 +102,5 @@ class Tiket extends BaseController
     //     return redirect()->to('/tiket');
     // }
 
-    // public function delete($id)
-    // {
-    //     $tiketModel = new TiketModel();
-    //     $tiketModel->delete($id);
 
-    //     return redirect()->to('/tiket');
-    // }
 }

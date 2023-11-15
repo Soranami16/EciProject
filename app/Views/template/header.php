@@ -24,7 +24,6 @@
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
@@ -106,7 +105,7 @@
 
             <li class="nav-item menu">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon far fa-file"></i>
                 <p>
                   Master Data
                   <i class="right fas fa-angle-left"></i>
@@ -215,7 +214,7 @@
             </li>
             <li class="nav-item">
               <a href="<?php echo base_url() . 'logout'; ?>" class="nav-link">
-                <i class="nav-icon fas fa-cog"></i>
+                <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                   Logout
                 </p>
