@@ -39,7 +39,7 @@ class Form_tender extends BaseController
             'division' => $division,
         ];
 
-        return view('template/header', $data) . view('tiket/form_tender', $data) . view('template/footer');  //ini nyambunginnya
+        return view('tiket/form_tender', $data); //ini nyambunginnya
     }
 
     public function submitForm()

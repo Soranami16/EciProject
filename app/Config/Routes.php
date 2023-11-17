@@ -18,5 +18,6 @@ $routes->get("listtiket", "List_Tiket::index");
 $routes->post("createTiket", "Form_tender::SubmitForm");
 $routes->get("listtiket/detailtiket/(:num)", "List_Tiket::detail_tiket/$1");
 $routes->get("listtiket/deletetiket/(:num)", "List_Tiket::deletetiket/$1");
+
 $routes->get("listtiket/edittiket/(:num)", "Form_tender::editformtender/$1");
-$routes->post("listtiket/updatetiket/(:num)", "Form_tender::updateFormTender/$1");
+$routes->put("listtiket/updatetiket/(:num)", "Form_tender::updateFormTender/$1");

@@ -2,18 +2,42 @@
 
 namespace App\Controllers;
 
+use App\Models\RoleModel;
+use App\Models\TiketModel;
+use App\Models\UserModel;
+
 class Form_fasilitas extends BaseController
 {
+    private $session;
+    private $tiketModel;
+    private $input;
+    public function __construct()
+    {
+        $this->session = session();
+        $this->tiketModel = new TiketModel();
+    }
     public function index()
     {
-        $header = array(
-            "title"=>"Form Fasilitas It"
-        );
-        echo view('template/header', $header);
-        echo view('tiket/form_fasilitas_it');
-        echo view('template/footer');
+        $name = $this->session->get('name');
+
+        if (!$this->session->has('login_date')) {
+            $this->session->set('login_date', date('Y-m-d'));
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->where('Name', $name)->first(); // Mendapatkan informasi pengguna
+
+        $roleModel = new RoleModel();
+        $division = $roleModel->find($user['RoleOID']); // Mendapatkan informasi divisi berdasarkan RoleOID
+
+        $data = [
+            'title' => 'Form Fasilitas IT',
+            'name' => $name,
+            'user' => $user,
+            'division' => $division,
+        ];
+        // echo view('template/header', $header);
+        return view('tiket/form_fasilitas_it', $data);
+        // echo view('template/footer');
     }
-
 }
-
-

@@ -1,0 +1,8 @@
+<?= $this->extend('template/dashboard'); ?>
+<?= $this->section('page-content'); ?>
+<!-- Main content -->
+<section class="content">
+
+</section>
+<!-- /.content -->
+<?= $this->endSection(); ?>
