@@ -3,18 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\RoleModel;
-use App\Models\TiketModel;
+use App\Models\TenderModel;
 use App\Models\UserModel;
 
 class Form_fasilitas extends BaseController
 {
     private $session;
-    private $tiketModel;
+    private $TenderModel;
     private $input;
     public function __construct()
     {
         $this->session = session();
-        $this->tiketModel = new TiketModel();
+        $this->TenderModel = new TenderModel();
     }
     public function index()
     {

@@ -4,18 +4,18 @@ namespace App\Controllers;
 
 use App\Models\RoleModel;
 use App\Models\UserModel;
-use App\Models\TiketModel;
+use App\Models\TenderModel;
 
 class Form_tender extends BaseController
 {
     private $session;
-    private $tiketModel;
+    private $TenderModel;
     private $input;
 
     public function __construct()
     {
         $this->session = session();
-        $this->tiketModel = new TiketModel();
+        $this->TenderModel = new TenderModel();
     }
 
     public function index()
@@ -39,7 +39,7 @@ class Form_tender extends BaseController
             'division' => $division,
         ];
 
-        return view('tiket/form_tender', $data); //ini nyambunginnya
+        return view('tiket/form_tender', $data);
     }
 
     public function submitForm()
@@ -84,7 +84,7 @@ class Form_tender extends BaseController
             'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
         ];
 
-        $result = $this->tiketModel->insert($insertData);
+        $result = $this->TenderModel->insert($insertData);
 
         $response = [
             'success' => $result,
@@ -110,14 +110,14 @@ class Form_tender extends BaseController
             'name' => $name,
             'user' => $user,
             'division' => $division,
-            'tender' => $this->tiketModel->findByID($id)
+            'tender' => $this->TenderModel->findByID($id)
         ];
         return view('template/header', $data) . view('tiket/edit_tiket', $data) . view('template/footer');
     }
 
     public function updateFormTender($id)
     {
-        $tiketModel = new TiketModel();
+        $tiketModel = new TenderModel();
 
         $data = $this->request->getPost();
         // var_dump($data);
@@ -159,7 +159,7 @@ class Form_tender extends BaseController
             'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
         ];
 
-        $result = $this->tiketModel->update($id, $insertData);
+        $result = $this->TenderModel->update($id, $insertData);
 
         $response = [
             'success' => $result,

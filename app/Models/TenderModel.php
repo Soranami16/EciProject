@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TiketModel extends Model
+class TenderModel extends Model
 {
     protected $table = 'TiketTender';
     protected $primaryKey = 'id_tiket';
