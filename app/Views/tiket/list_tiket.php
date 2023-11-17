@@ -37,8 +37,9 @@
                                         <td><?= $row['status'] ?></td>
                                         <td>
                                             <a href="<?= base_url('listtiket/detailtiket/' . $row['id_tiket']) ?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                            <a href="<?= base_url('listtiket/edittiket/' . $row['id_tiket']) ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                            <a href="<?= base_url('listtiket/deletetiket/' . $row['id_tiket']) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="<?= base_url(route_to('edit-formTender', $row['id_tiket'])) ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(route_to('delete-formTender', $row['id_tiket'])) ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

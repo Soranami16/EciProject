@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "/createTiket",
+      url: "/createTender",
       data: formData,
       dataType: "json",
       success: function (response) {
@@ -30,15 +30,13 @@ $(document).ready(function () {
   $("#formTiketTenderEdit").submit(function (e) {
     e.preventDefault();
 
-    // Extract the ticket ID from the form or any other way you have it
-    var ticketId = $(this).find('input[name="ticket_id"]').val();
-
-    var formData = $(this).serialize();
+    var formData = $(this).serializeArray();
+    var url = "updateTender/" + $("#id_tiket").val();
 
     $.ajax({
       type: "POST",
-      url: "listtiket/updatetiket/" + ticketId,
-      data: formData,
+      url: url,
+      data: JSON.stringify(formData),
       dataType: "json",
       success: function (response) {
         if (response.success) {

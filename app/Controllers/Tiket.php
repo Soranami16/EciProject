@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Models\TenderModel;
+use App\Models\TiketModel;
 use App\Models\UserModel;
 use CodeIgniter\API\ResponseTrait;
 
-class List_Tiket extends BaseController
+class Tiket extends BaseController
 {
     use ResponseTrait;
     private $session;
@@ -15,11 +15,11 @@ class List_Tiket extends BaseController
     public function __construct()
     {
         $this->session = session();
-        $this->tiketModel = new TenderModel();
+        $this->tiketModel = new TiketModel();
     }
     public function index()
     {
-        $tiketModel = new TenderModel();
+        $tiketModel = new TiketModel();
         $name = $this->session->get('name');
 
         $data = [
@@ -28,7 +28,7 @@ class List_Tiket extends BaseController
             'tiket' => $tiketModel->getTiketWithUserAndRole()
         ];
 
-        return view('tiket/list_tiket', $data);
+        return view('template/header', $data) . view('tiket/list_tiket', $data) . view('template/footer');
     }
 
     public function detail_tiket($id_tiket)
@@ -67,10 +67,16 @@ class List_Tiket extends BaseController
             'it_support' => $it_support
         ];
 
-        return view('tiket/detail_tiket', $data);
+        return view('template/header', $data) . view('tiket/detail_tiket', $data) . view('template/footer');
     }
 
+    public function deletetiket($id)
+    {
+        $tiketModel = new TiketModel();
+        $tiketModel->delete($id);
 
+        return redirect()->to('/listtiket');
+    }
 
     // public function edit($id)
     // {

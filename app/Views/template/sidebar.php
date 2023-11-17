@@ -3,12 +3,6 @@
      <div class="sidebar">
 
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-             <div class="info">
-                 <div class="info">
-                     <a href="#" class="d-block"><?= $name ?></a>
-                 </div>
-
-             </div>
          </div>
 
          <div class="form-inline">
@@ -136,7 +130,7 @@
                      </ul>
                  </li>
                  <li class="nav-item">
-                     <a href="pages/widgets.html" class="nav-link">
+                     <a href="#" class="nav-link">
                          <i class="nav-icon fas fa-cog"></i>
                          <p>
                              Setting

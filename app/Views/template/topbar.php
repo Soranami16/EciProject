@@ -35,6 +35,11 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li>
+        <li>
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <span class="d-inline-block"><?= $name ?></span>
+            </a>
+        </li>
     </ul>
 </nav>
 <!-- /.navbar -->

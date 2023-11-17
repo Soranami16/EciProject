@@ -15,6 +15,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form id="formTiketTenderEdit">
+                        <input type="hidden" name="id_tiket" id="id_tiket" value="<?= $tender['id_tiket'] ?>">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">

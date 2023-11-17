@@ -5,9 +5,11 @@ namespace App\Controllers;
 use App\Models\RoleModel;
 use App\Models\UserModel;
 use App\Models\TenderModel;
+use CodeIgniter\API\ResponseTrait;
 
 class Form_tender extends BaseController
 {
+    use ResponseTrait;
     private $session;
     private $TenderModel;
     private $input;
@@ -91,7 +93,7 @@ class Form_tender extends BaseController
             'message' => ($result) ? 'Form submitted successfully' : 'Error submitting form',
         ];
 
-        return $this->response->setJSON($response);
+        return $this->respondCreated($response);
     }
 
     public function editformtender($id)
@@ -112,16 +114,15 @@ class Form_tender extends BaseController
             'division' => $division,
             'tender' => $this->TenderModel->findByID($id)
         ];
-        return view('template/header', $data) . view('tiket/edit_tiket', $data) . view('template/footer');
+        return view('tiket/edit_formTender', $data);
     }
 
     public function updateFormTender($id)
     {
-        $tiketModel = new TenderModel();
-
+        $request = $this->request->getJSON();
         $data = $this->request->getPost();
-        // var_dump($data);
-        // die;
+        var_dump($data);
+        die;
 
         if ($data['tender_type'] == 0) {
             $deskripsi = $data['deskripsi_tender_baru'];
@@ -143,6 +144,7 @@ class Form_tender extends BaseController
         }
 
         $insertData = [
+            'id' => $id,
             'tanggal' => $data['tgl_pengajuan'],
             'user_id' => $data['user_id'],
             'role_id' => $data['role_id'],
@@ -163,9 +165,17 @@ class Form_tender extends BaseController
 
         $response = [
             'success' => $result,
-            'message' => ($result) ? 'Form submitted editsuccessfully' : 'Error submitting form',
+            'message' => ($result) ? 'Form submitted edit successfully' : 'Error submitting form',
         ];
 
         return $this->response->setJSON($response);
+    }
+
+    public function deletetiket($id)
+    {
+        $tiketModel = new TenderModel();
+        $tiketModel->delete($id);
+
+        return redirect()->to('/listtiket');
     }
 }
