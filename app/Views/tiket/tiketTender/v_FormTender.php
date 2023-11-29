@@ -17,6 +17,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-6">
+                  <!-- Kalau Error -->
+                  <div class="alert alert-danger error" role="alert" style="display: none;"></div>
                   <div class="form-group">
                     <label>Tanggal Pengajuan</label>
                     <?php
@@ -26,42 +28,34 @@
                   </div>
                   <div class="form-group">
                     <label for="user_id">Nama</label>
-                    <input type="text" name="nama_user" class="form-control" id="nama_user" value="<?= $name ?>">
+                    <input type="text" name="nama_user" class="form-control" id="nama_user" value="<?= $name ?>" readonly>
                     <input type="hidden" name="user_id" value="<?= $user['OID'] ?>">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Tanggal Diperlukan</label>
-                    <input type="date" class="form-control" name="tgl_diperlukan" />
-                    <!-- <div class="input-group date" id="tgl_diperlukan" name="tgl_diperlukan" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" name="tgl_diperlukan" />
-                        <div class="input-group-append" data-target="#tgl_diperlukan" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                      </div> -->
+                    <input type="date" class="form-control" name="tgl_diperlukan" required />
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Divisi</label>
-                    <input type="text" name="nama_divisi" class="form-control" id="nama_divisi" value="<?= $division['Name'] ?>">
+                    <input type="text" name="nama_divisi" class="form-control" id="nama_divisi" value="<?= $division['Name'] ?>" readonly>
                     <input type="hidden" name="role_id" value="<?= $division['OID'] ?>">
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-2">
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderBaru" value="0">
-                      <label class="custom-control-label" for="TenderBaru">Tender Type Baru</label>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div class="form-check">
+                      <input type="radio" name="tender_type" class="form-check-input" id="TenderBaru" value="0" required>
+                      <label class="form-check-label" for="TenderBaru"><strong>Tender Type Baru</strong></label>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-2">
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="tender_type" class="custom-control-input" id="TenderLama" value="1">
-                      <label class="custom-control-label" for="TenderLama">Tender Type Lama</label>
+                  <div class="col-sm-2">
+                    <div class="form-check">
+                      <input type="radio" name="tender_type" class="form-check-input" id="TenderLama" value="1" required>
+                      <label class="form-check-label" for="TenderLama"><strong>Tender Type Lama</strong></label>
                     </div>
                   </div>
                 </div>
@@ -75,20 +69,20 @@
                 </div>
                 <div class="form-group">
                   <label for="edcbaru">EDC Baru</label>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="edc_baru" class="custom-control-input" id="Ya" value="0">
-                          <label class="custom-control-label" for="Ya">Ya</label>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <div class="form-check">
+                          <input type="radio" name="edc_baru" class="form-check-input" id="Ya" value="0">
+                          <label class="form-check-label" for="Ya"><strong>Ya</strong></label>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="edc_baru" class="custom-control-input" id="Tidak" value="1">
-                          <label class="custom-control-label" for="Tidak">Tidak</label>
+                      <div class="col-sm-2">
+                        <div class="form-check">
+                          <input type="radio" name="edc_baru" class="form-check-input" id="Tidak" value="1">
+                          <label class="form-check-label" for="Tidak">
+                            <stromg>Tidak</strong>
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -105,20 +99,18 @@
                 </div>
                 <div class="form-group">
                   <label for="kar_tender">Karakteristik Tender</label>
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="SementaraBaru" value="0">
-                          <label class="custom-control-label" for="SementaraBaru">Sementara</label>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <div class="form-check">
+                          <input type="radio" name="karakteristik_tender_baru" class="form-check-input" id="SementaraBaru" value="0">
+                          <label class="form-check-label" for="SementaraBaru"><strong>Sementara</strong></label>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="karakteristik_tender_baru" class="custom-control-input" id="PermanenBaru" value="1">
-                          <label class="custom-control-label" for="PermanenBaru">Permanen</label>
+                      <div class="col-sm-2">
+                        <div class="form-check">
+                          <input type="radio" name="karakteristik_tender_baru" class="form-check-input" id="PermanenBaru" value="1">
+                          <label class="form-check-label" for="PermanenBaru"><strong>Permanen</strong></label>
                         </div>
                       </div>
                     </div>
@@ -128,7 +120,7 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru" />
+                          <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru">
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -153,20 +145,18 @@
                 </div>
                 <div class="form-group">
                   <label for="kar_tender">Karakteristik Tender</label>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <div class="form-group">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-sm-2">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="SementaraLama" value="0">
-                          <label class="custom-control-label" for="SementaraLama">Sementara</label>
+                          <input type="radio" name="karakteristik_tender_lama" class="form-check-input" id="SementaraLama" value="0">
+                          <label class="form-check-label" for="SementaraLama">Sementara</label>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
+                      <div class="col-sm-2">
                         <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="karakteristik_tender_lama" class="custom-control-input" id="Permanenlama" value="1">
-                          <label class="custom-control-label" for="Permanenlama">Permanen</label>
+                          <input type="radio" name="karakteristik_tender_lama" class="form-check-input" id="PermanenLama" value="1">
+                          <label class="form-check-label" for="Permanenlama">Permanen</label>
                         </div>
                       </div>
                     </div>
