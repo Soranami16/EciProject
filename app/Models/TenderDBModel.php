@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RoleModel extends Model
+class TenderDBModel extends Model
 {
     protected $table = 'Roles';
     protected $primaryKey = 'OID';

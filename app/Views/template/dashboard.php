@@ -5,7 +5,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?></title>
+    <style>
+        .custom-size {
+            width: 300px;
+        }
 
+        .sweetalert-title {
+            font-size: 20px;
+            /* Adjust the font size as needed */
+        }
+
+        .sweetalert-text {
+            font-size: 16px;
+            /* Adjust the font size as needed */
+        }
+
+        .swal2-confirm.sweetalert-confirm-button {
+            font-size: 18px;
+            /* Adjust the font size as needed */
+        }
+
+        .swal2-cancel.sweetalert-cancel-button {
+            font-size: 16px;
+            /* Adjust the font size as needed */
+        }
+    </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?php echo base_url('plugins/fontawesome-free/css/all.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('dist/css/adminlte.min.css?v=3.2.0') ?>">
@@ -72,47 +96,51 @@
                 <span>&copy;<?= date('Y'); ?> Electronic City Indonesia. All Rights Reserved </span>
             </div>
         </footer>
-        <!-- FOOTER -->
+    </div> <!-- FOOTER -->
 
-        <!-- ------------------------------------------------------- -->
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-        <!-- ------------------------------------------------------- -->
+    <!-- ------------------------------------------------------- -->
+    <!-- Control Sidebar -->
+    <!-- <aside class="control-sidebar control-sidebar-dark">
+         Control sidebar content goes here 
+    </aside> -->
+    <!-- /.control-sidebar -->
+    <!-- ------------------------------------------------------- -->
 
-        <script src="<?php echo base_url('plugins/jquery/jquery.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/select2/js/select2.full.min.js') ?>"></script>
-        <script src="<?php echo base_url('dist/js/adminlte.js?v=3.2.0') ?>"></script>
-        <script src="<?php echo base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-        <script src="<?php echo base_url('js/DataTables.js') ?>"></script>
-        <script src="<?php echo base_url('js/global.js') ?>"></script>
-        <script src="<?php echo base_url('js/form_tender.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/jquery/jquery.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/select2/js/select2.full.min.js') ?>"></script>
+    <script src="<?php echo base_url('dist/js/adminlte.js?v=3.2.0') ?>"></script>
+    <script src="<?php echo base_url('plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?php echo base_url('js/DataTables.js') ?>"></script>
+    <script src="<?php echo base_url('js/global.js') ?>"></script>
+    <script src="<?php echo base_url('js/form_tender.js') ?>"></script>
+    <script src="<?php echo base_url('js/ModalListTiket.js') ?>"></script>
+    <script src="<?php echo base_url('js/ModalMaster.js') ?>"></script>
 
-        <!-- DataTables -->
-        <script src="<?php echo base_url('plugins/datatables/jquery.dataTables.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-buttons/js/dataTables.buttons.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') ?>"></script>
+    <!-- DataTables -->
+    <script src="<?php echo base_url('plugins/datatables/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-responsive/js/dataTables.responsive.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-buttons/js/dataTables.buttons.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') ?>"></script>
 
-        <script src="<?php echo base_url('plugins/datatables-searchbuilder/js/dataTables.searchBuilder.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-searchbuilder/js/dataTables.searchBuilder.min.js') ?>"></script>
 
-        <script src="<?php echo base_url('plugins/jszip/jszip.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/pdfmake/pdfmake.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/pdfmake/vfs_fonts.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
-        <script src="<?php echo base_url('plugins/datatables-buttons/js/buttons.print.min.js') ?>"></script>
-        <script src="<?php echo base_url('/plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/jszip/jszip.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/pdfmake/pdfmake.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/pdfmake/vfs_fonts.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
+    <script src="<?php echo base_url('plugins/datatables-buttons/js/buttons.print.min.js') ?>"></script>
+    <script src="<?php echo base_url('/plugins/datatables-buttons/js/buttons.colVis.min.js') ?>"></script>
 
-        <!-- <script src="<?php echo base_url('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') ?>"></script> -->
-        <!-- <script src="<?php echo base_url('plugins/moment/moment.min.js') ?>"></script> -->
-        <!-- <script src="<?php echo base_url('plugins/inputmask/jquery.inputmask.min.js') ?>"></script> -->
-        <!-- <script src="<?php echo base_url('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') ?>"></script> -->
-        <!-- <script src="<?php echo base_url('plugins/bootstrap-switch/js/bootstrap-switch.min.js') ?>"></script> -->
-        <!-- <script src="<?php echo base_url('plugins/bs-stepper/js/bs-stepper.min.js') ?>"></script> -->
-        <!-- <script src="<?php echo base_url('plugins/dropzone/min/dropzone.min.js') ?>"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- <script src="<?php echo base_url('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') ?>"></script> -->
+    <!-- <script src="<?php echo base_url('plugins/moment/moment.min.js') ?>"></script> -->
+    <!-- <script src="<?php echo base_url('plugins/inputmask/jquery.inputmask.min.js') ?>"></script> -->
+    <!-- <script src="<?php echo base_url('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') ?>"></script> -->
+    <!-- <script src="<?php echo base_url('plugins/bootstrap-switch/js/bootstrap-switch.min.js') ?>"></script> -->
+    <!-- <script src="<?php echo base_url('plugins/bs-stepper/js/bs-stepper.min.js') ?>"></script> -->
+    <!-- <script src="<?php echo base_url('plugins/dropzone/min/dropzone.min.js') ?>"></script> -->
 
 </body>

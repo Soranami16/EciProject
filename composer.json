@@ -13,6 +13,7 @@
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
         "defuse/php-encryption": "^2.4",
+        "dompdf/dompdf": "^2.0",
         "firebase/php-jwt": "^6.9"
     },
     "require-dev": {

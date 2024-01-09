@@ -38,7 +38,7 @@
 		}
 
 		.panel-login>.panel-heading a.active {
-			color: #029f5b;
+			color: #59B2E0;
 			font-size: 18px;
 		}
 
@@ -137,10 +137,12 @@
 						<div class="col-lg-12">
 							<form id="login-form" role="form" style="display: block;">
 								<div class="form-group">
-									<input type="text" name="username" id="login-username" tabindex="1" class="form-control" placeholder="Username" value="">
+									<input type="text" name="username" id="login-username" tabindex="1" class="form-control" placeholder="Username">
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="login-password" tabindex="2" class="form-control" placeholder="Password">
+									<p id="pesanvalidasi"></P>
+									<p id="pesantunggu"></P>
 								</div>
 								<div class="form-group">
 									<div class="row">
@@ -148,7 +150,6 @@
 											<input type="button" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
 										</div>
 									</div>
-								</div>
 							</form>
 						</div>
 					</div>

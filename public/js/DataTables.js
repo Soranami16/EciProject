@@ -10,7 +10,7 @@ $(document).ready(function () {
     // processing: true,
     // serverSide: true,
     ajax: {
-      url: "/notifikasi/histori", // Ganti dengan route yang sesuai
+      url: "/notifikasi/histori",
       type: "GET",
     },
     columns: [
@@ -27,14 +27,14 @@ $(document).ready(function () {
         data: "status",
       },
       {
-        data: "tgl",
+        data: "tanggal",
       },
     ],
   });
 });
 
 $(document).ready(function () {
-  $("#listTableBody").DataTable({
+  var table = $("#listTableBody").DataTable({
     paging: true,
     lengthChange: true,
     searching: true,
@@ -42,10 +42,8 @@ $(document).ready(function () {
     info: true,
     autoWidth: false,
     responsive: true,
-    // processing: true,
-    // serverSide: true,
     ajax: {
-      url: "/listtiket/list", // Ganti dengan route yang sesuai
+      url: "/listtiket/list",
       type: "GET",
     },
     columns: [
@@ -70,7 +68,161 @@ $(document).ready(function () {
       {
         data: "action",
       },
-      // Tambahkan kolom lain sesuai kebutuhan
     ],
   });
+});
+
+$(document).ready(function () {
+  var table = $("#masteruserTablebody").DataTable({
+    paging: true,
+    lengthChange: true,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    ajax: {
+      url: "/masteruser/master",
+      type: "GET",
+    },
+    columns: [
+      {
+        data: "no",
+      },
+      {
+        data: "code",
+      },
+      {
+        data: "name",
+      },
+      {
+        data: "roleoid",
+      },
+      {
+        data: "action",
+      },
+    ],
+  });
+
+  // function reloadTable() {
+  //   table.ajax.reload();
+  // }
+  // setInterval(reloadTable, 5000);
+});
+
+$(document).ready(function () {
+  var table = $("#masterstoreTablebody").DataTable({
+    paging: true,
+    lengthChange: true,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    ajax: {
+      url: "/masterstore/master",
+      type: "GET",
+    },
+    columns: [
+      {
+        data: "no",
+      },
+      {
+        data: "CompanyOID",
+      },
+      {
+        data: "Code",
+      },
+      {
+        data: "Name",
+      },
+      {
+        data: "StoreRegionOID",
+      },
+      {
+        data: "TenderRegionOID",
+      },
+      {
+        data: "StoreDCOID",
+      },
+      {
+        data: "ReturnDay",
+      },
+      {
+        data: "OptimisticLockField",
+      },
+      {
+        data: "GCRecord",
+      },
+      {
+        data: "BusinessDate",
+      },
+      {
+        data: "StoreType",
+      },
+      {
+        data: "Expired",
+      },
+      {
+        data: "IsActive",
+      },
+      {
+        data: "EInvoice",
+      },
+      {
+        data: "StoreRegionalOID",
+      },
+      {
+        data: "TInvoice",
+      },
+      {
+        data: "StoreTieringOID",
+      },
+      {
+        data: "action",
+      },
+    ],
+  });
+
+  // function reloadTable() {
+  //   table.ajax.reload();
+  // }
+  // setInterval(reloadTable, 5000);
+});
+$(document).ready(function () {
+  var table = $("#masterstorelocationTablebody").DataTable({
+    paging: true,
+    lengthChange: true,
+    searching: true,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    ajax: {
+      url: "/masterstorelocation/master",
+      type: "GET",
+    },
+    columns: [
+      {
+        data: "no",
+      },
+      {
+        data: "storeoid",
+      },
+      {
+        data: "code",
+      },
+      {
+        data: "name",
+      },
+      {
+        data: "action",
+      },
+    ],
+  });
+
+  // function reloadTable() {
+  //   table.ajax.reload();
+  // }
+  // setInterval(reloadTable, 5000);
 });

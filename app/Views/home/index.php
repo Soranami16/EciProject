@@ -16,12 +16,22 @@
                     </div>
                 </div>
             </div>
-
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3><?= $tiketSolved ?></h3>
                         <p>Tiket Solved..</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3><?= $tiketDitolak ?></h3>
+                        <p>Tiket Ditolak..</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-ticket-alt"></i>

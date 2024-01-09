@@ -120,7 +120,7 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru">
+                          <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_baru" id="tgl_aktifBaru">
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -166,7 +166,7 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_lama" />
+                          <input type="date" class="form-control datetimepicker-input" name="tgl_aktif_lama" id="tgl_aktifLama" />
                         </div>
                       </div>
                       <div class="col-sm-6">
@@ -197,5 +197,24 @@
     <!-- /.row -->
   </div><!-- /.container-fluid -->
 </section>
+
+
+<!-- <script>
+  function editFunction(tiketID) {
+  $.ajax({
+    url: "listtiket/editTender/" + tiketID,
+    type: "GET",
+    success: function (data) {
+      $("body").append(response);
+      $("#editModal").modal("show");
+      
+    },
+    error: function (error) {
+      console.error("Error fetching modal content:", error);
+    },
+  });
+}
+</script> -->
+
 <!-- /.content -->
 <?= $this->endSection(); ?>

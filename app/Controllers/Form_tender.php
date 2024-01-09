@@ -24,6 +24,9 @@ class Form_tender extends BaseController
     public function index()
     {
 
+        if (!$this->session->has('oid')) {
+            return redirect()->to('/');
+        }
         $name = $this->session->get('name');
 
         $userLoginDate = date('m/d/Y');
@@ -32,6 +35,7 @@ class Form_tender extends BaseController
 
         $roleModel = new RoleModel();
         $division = $roleModel->find($user['RoleOID']);
+        $role = $this->session->get('roleoid');
 
         $data = [
             'title' => 'Form Tender',
@@ -39,6 +43,7 @@ class Form_tender extends BaseController
             'name' => $name,
             'user' => $user,
             'division' => $division,
+            'role' => $role
         ];
 
         return view('tiket/tiketTender/v_FormTender', $data);
@@ -85,8 +90,8 @@ class Form_tender extends BaseController
             'ket_edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['ket_edc_baru'] : null,
             'GL_mapping_tender' => ($data['tender_type'] == 0) ? $data['GL_mapping_tender'] : null,
             'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
-            'createdAt'    => date('Y-m-d H:i:s'),
-            'modifiedAt'    => date('Y-m-d H:i:s')
+            // 'CreatedAt'    => date('Y-m-d H:i:s'),
+            // 'ModifiedAt'    => date('Y-m-d H:i:s')
         ];
 
         $result = $this->TenderModel->insert($insertData);
@@ -109,6 +114,7 @@ class Form_tender extends BaseController
         $user = $this->userModel->where('Name', $name)->first();
         $roleModel = new RoleModel();
         $division = $roleModel->find($user['RoleOID']);
+        $tender = $this->TenderModel->findByID($id);
 
         $data = [
             'title' => 'Edit Form Tender',
@@ -116,13 +122,10 @@ class Form_tender extends BaseController
             'user' => $user,
             'division' => $division,
             'tiket' => $tiket,
-            'tender' => $this->TenderModel->findByID($id),
-
+            'tender' => $tender
         ];
 
-        // return view('tiket/tiketTender/v_FormTenderEdit', $data);
-        return view('tiket/modals/v_EditFormTender', $data);
-        // echo json_encode($data);
+        echo json_encode($data);
     }
 
     public function updateFormTender($id)
@@ -151,6 +154,7 @@ class Form_tender extends BaseController
         }
 
         $insertData = [
+            'id_tiket' => $data['id_tiket'],
             'tanggal' => $data['tgl_pengajuan'],
             'user_id' => $data['user_id'],
             'role_id' => $data['role_id'],
@@ -165,6 +169,7 @@ class Form_tender extends BaseController
             'ket_edc_baru' => ($data['tender_type'] == 0 && $data['edc_baru'] == 0) ? $data['ket_edc_baru'] : null,
             'GL_mapping_tender' => ($data['tender_type'] == 0) ? $data['GL_mapping_tender'] : null,
             'kode_tender' => ($data['tender_type'] == 1) ? $data['kode_tender'] : null,
+            // 'ModifiedAt'    => date('Y-m-d H:i:s')
         ];
 
         $result = $this->TenderModel->update($id, $insertData);
