@@ -70,6 +70,51 @@ $(document).ready(function () {
       },
     ],
   });
+  $("#listTableBodyFasilitas").DataTable({
+    paging: true,
+    lengthChange: true,
+    searching: true,
+    pageLength: 10,
+    scrollY: 310,
+    ordering: true,
+    info: true,
+    autoWidth: false,
+    responsive: true,
+    // processing: true,
+    // serverSide: true,
+    ajax: {
+      url: "/listtiket/listFasilitas", // Ganti dengan route yang sesuai
+      type: "GET",
+    },
+    columns: [
+      //data:"namaColomDiDB"
+      {
+        data: "no",
+      },
+      {
+        data: "tanggal",
+      },
+      {
+        data: "nik",
+      },
+      {
+        data: "dept",
+      },
+      {
+        data: "nama",
+      },
+      {
+        data: "jabatan",
+      },
+      {
+        data: "status",
+      },
+      {
+        data: "action",
+      },
+      // Tambahkan kolom lain sesuai kebutuhan
+    ],
+  });
 });
 
 $(document).ready(function () {

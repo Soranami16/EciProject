@@ -15,6 +15,16 @@ class StoreModel extends Model
         'Expired', 'IsActive', 'EInvoice', 'StoreRegionalOID', 'TInvoice', 'StoreTieringOID'
     ];
 
+    public function getStore() //ini buat list tiket
+    {
+        $builder = $this->db->table($this->table);
+        return $builder->get()->getResultArray();
+    }
+
+    public function getStoreAll()
+    {
+        return $this->findAll();
+    }
 
     public function findByID($id)
     {

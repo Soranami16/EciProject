@@ -51,6 +51,8 @@ $routes->get("listtiket", "List_Tiket::index",); //ini buat tampilannya
 $routes->get("listtiket/list", "List_Tiket::listtiket",); //ini buat fungsi nya
 $routes->get("listtiket/detailtiket/(:num)", "List_Tiket::detail_tiket/$1"); //Read data detail
 $routes->post("pdfcontroller/generate/(:num)", 'PdfController::generateModalPdf/$1'); // ini pdf belum bisa cuy
+$routes->get("listtiket/listFasilitas", "List_Tiket::listtiketFasilitas",); //ini buat fungsi nya
+$routes->get("listtiket/detailtiketfasilitas/(:num)", "List_Tiket::detail_tiketFasilitas/$1"); //Read data Form
 
 //CRUD FORM TENDER
 $routes->get('/formtender', 'Form_tender::index'); //ini tampilannya 
@@ -58,3 +60,9 @@ $routes->post("createTender", "Form_tender::SubmitForm", ['as' => 'create-formTe
 $routes->get("listtiket/editTender/(:num)", "Form_tender::editformtender/$1", ['as' => 'edit-formTender']); //ini buat tampilannya
 $routes->post("updateTender/(:num)", "Form_tender::updateFormTender/$1", ['as' => 'update-formTender']); //ini buat fungsi nya
 $routes->post("listtiket/deleteTender/(:num)", "Form_tender::deletetiket/$1", ['as' => 'delete-formTender']);
+
+//CRUD FORM FASILITAS
+$routes->post("createFasilitas", "Form_fasilitas::simpan");
+$routes->post("listtiket/deleteFasilitas/(:num)", "Form_fasilitas::deletetiket/$1", ['as' => 'delete-formFasilitas']);
+$routes->get("listtiket/editFasilitas/(:num)", "Form_fasilitas::editformfasilitas/$1", ['as' => 'edit-formFasilitas']); //ini buat tampilannya
+$routes->post("updateFasilitas/(:num)", "Form_fasilitas::updateFormFasilitas/$1", ['as' => 'update-formFasilitas']); //ini buat fungsi nya

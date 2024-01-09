@@ -3,19 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\TenderModel;
-use App\Models\UserModel;
+use App\Models\StoreModel;
+use App\Models\FasilitasModel;
 use CodeIgniter\API\ResponseTrait;
 
 class List_Tiket extends BaseController
 {
     use ResponseTrait;
+    private $storeModel;
     private $session;
     private $TenderModel;
+    private $FasilitasModel;
 
     public function __construct()
     {
         $this->session = session();
         $this->TenderModel = new TenderModel();
+        $this->FasilitasModel = new FasilitasModel();
+        $this->storeModel = new StoreModel();
     }
 
     public function index()
@@ -418,5 +423,75 @@ class List_Tiket extends BaseController
         }
 
         return $this->response->setJSON($response);
+    }
+
+    public function listtiketFasilitas()
+    {
+        $fasilitas = $this->FasilitasModel->getFasilitas();
+        $storeModel = new StoreModel();
+        $stores = $storeModel->getStore();
+
+        $data = [];
+        $no = 1;
+        foreach ($fasilitas as $f) {
+            $Status = $f["status"];
+            if ($Status == 0) {
+                $status = "Waiting..";
+                $actionButtons =
+
+                    '<button class="btn btn-success mr-2" onclick="detailFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-eye"></i></button>' .
+                    '<button class="btn btn-warning mr-2" onclick="editFunctionFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-edit"></i></button>' .
+                    '<button class="btn btn-danger" onclick="deletetiketFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-trash"></i></button>';
+            } elseif ($Status == 1) {
+                $status = "Approve Atasan ..";
+                $actionButtons =
+                    '<button class="btn btn-success mr-2" onclick="detailFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-eye"></i></button>' .
+                    '<button class="btn btn-warning" onclick="editFunctionFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-edit"></i></button>';
+            } elseif ($Status == 2) {
+                $status = "Approve Finance ..";
+                $actionButtons =
+                    '<button class="btn btn-success mr-2" onclick="detailFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-eye"></i></button>' .
+                    '<button class="btn btn-warning" onclick="editFunctionFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-edit"></i></button>';
+            } else {
+                $status = "Solved";
+                $actionButtons =
+                    '<button class="btn btn-info mr-2" onclick="detailFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-eye"></i></button>' .
+                    '<button class="btn btn-primary" onclick="editFunctionFasilitas(' . $f["id_tiket"] . ')"><i class="fa fa-edit"></i></button>';
+            }
+
+            $data[] = [
+                // 'id' => $f["user_id"],
+                'no' => $no,
+                'tanggal' => $f["tanggal"],
+                'store' => $f["store"],
+                'nik' => $f["nik"],
+                'dept' => $f["dept"],
+                'nama' => $f["nama"],
+                'jabatan' => $f["jabatan"],
+                'status' => $status,
+                'action' => $actionButtons,
+                'fasilitas' => $fasilitas,
+                'stores' => $stores
+            ];
+            $no++;
+        }
+        // return $this->response->setJSON($data); //data harus dikirim jadi pake json benerin lagi dah
+        echo json_encode(['data' => $data]);
+    }
+    public function detail_tiketFasilitas($id_tiket)
+    {
+        $name = $this->session->get('name');
+        $tiket = $this->FasilitasModel->get_id_tiket($id_tiket);
+
+        $data = [
+            'title' => 'Detail Tiket Page',
+            'name'  =>  $name,
+            'tiket' => $tiket,
+            // 'atasan' => $atasan,
+            // 'finance' => $finance,
+            // 'it_support' => $it_support
+        ];
+
+        echo json_encode($data);
     }
 }
